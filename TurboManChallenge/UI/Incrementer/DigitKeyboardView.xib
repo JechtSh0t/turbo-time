@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DigitKeyboardView" customModule="incrementer_view" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="h4o-Pu-Aei" customClass="DigitKeyboardView" customModule="incrementer_view" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wiM-Sn-8Oc" userLabel="fullStack">
+                    <rect key="frame" x="11.5" y="7.5" width="427.5" height="285"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-Uv-sKX" userLabel="rowStack">
+                            <rect key="frame" x="0.0" y="0.0" width="321.5" height="285"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="oOe-fR-0t4" userLabel="firstRowStack">
+                                    <rect key="frame" x="0.0" y="0.0" width="321.5" height="64"/>
+                                    <subviews>
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0oX-Dc-xCY" userLabel="oneButton">
+                                            <rect key="frame" x="0.0" y="0.0" width="98.5" height="64"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="OneKeyIdentifier"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <state key="normal" title="1">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="63p-rW-ima"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Db-Ag-Vjh" userLabel="twoButton">
+                                            <rect key="frame" x="111.5" y="0.0" width="98.5" height="64"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="TwoKeyIdentifier"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <state key="normal" title="2">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="idC-GH-lpR"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzj-I8-ML3" userLabel="threeButton">
+                                            <rect key="frame" x="223" y="0.0" width="98.5" height="64"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="ThreeKeyIdentifier"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <state key="normal" title="3">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="0If-BI-R8y"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="dul-bQ-nXT" userLabel="secondRowStack">
+                                    <rect key="frame" x="0.0" y="74" width="321.5" height="63.5"/>
+                                    <subviews>
+                                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2P-pj-6k4" userLabel="fourButton">
+                                            <rect key="frame" x="0.0" y="0.0" width="98.5" height="63.5"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="FourKeyIdentifier"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <state key="normal" title="4">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="pTb-VU-v6K"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZt-6E-8M7" userLabel="fiveButton">
+                                            <rect key="frame" x="111.5" y="0.0" width="98.5" height="63.5"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="FiveKeyIdentifier"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <state key="normal" title="5">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="lxq-ad-7rS"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wj-q6-vpf" userLabel="sixButton">
+                                            <rect key="frame" x="223" y="0.0" width="98.5" height="63.5"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="SixKeyIdentifier"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <state key="normal" title="6">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="azG-2R-Pc8"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="VnK-Wy-RgS" userLabel="thirdRowStack">
+                                    <rect key="frame" x="0.0" y="147.5" width="321.5" height="64"/>
+                                    <subviews>
+                                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUe-ey-GrB" userLabel="sevenButton">
+                                            <rect key="frame" x="0.0" y="0.0" width="98.5" height="64"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="SevenKeyIdentifier"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <state key="normal" title="7">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="96z-Ta-XbG"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8O2-Hh-k2r" userLabel="eightButton">
+                                            <rect key="frame" x="111.5" y="0.0" width="98.5" height="64"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="EightKeyIdentifier"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <state key="normal" title="8">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="VsO-j7-3ib"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCb-aW-CEX" userLabel="nineButton">
+                                            <rect key="frame" x="223" y="0.0" width="98.5" height="64"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="NineKeyIdentifier"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <state key="normal" title="9">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="NVB-p6-FK3"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0GJ-yV-KOK" userLabel="zeroButton">
+                                    <rect key="frame" x="0.0" y="221.5" width="321.5" height="63.5"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="ZeroKeyIdentifier"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="zgb-rp-VNP"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bzJ-pw-ht1" userLabel="columnStack">
+                            <rect key="frame" x="331.5" y="0.0" width="96" height="285"/>
+                            <subviews>
+                                <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dc-Tp-EWd" userLabel="backspaceButton">
+                                    <rect key="frame" x="0.0" y="0.0" width="96" height="62.5"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="BackspaceKeyIdentifier"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="clear" catalog="system">
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="keyPressed:" destination="h4o-Pu-Aei" eventType="touchUpInside" id="uQO-rs-ot9"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9K-aC-plc" userLabel="doneButton">
+                                    <rect key="frame" x="0.0" y="72.5" width="96" height="140"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="DoneKeyIdentifier"/>
+                                    <gestureRecognizers/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="Done">
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="keyPressed:" destination="h4o-Pu-Aei" eventType="touchUpInside" id="ePj-hh-SPz"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aey-AX-Q46" userLabel="clearButton">
+                                    <rect key="frame" x="0.0" y="222.5" width="96" height="62.5"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="DismissKeyIdentifier"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="keyboard.chevron.compact.down" catalog="system">
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="keyPressed:" destination="h4o-Pu-Aei" eventType="touchUpInside" id="gtO-VO-usw"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="aey-AX-Q46" firstAttribute="height" secondItem="7dc-Tp-EWd" secondAttribute="height" id="BST-4F-ype"/>
+                                <constraint firstAttribute="width" constant="96" id="jEc-dO-POv"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="wiM-Sn-8Oc" secondAttribute="height" multiplier="3:2" id="7L8-sZ-tN9"/>
+                        <constraint firstItem="h9K-aC-plc" firstAttribute="height" secondItem="0GJ-yV-KOK" secondAttribute="height" multiplier="2.2" id="z27-g5-evn"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="wiM-Sn-8Oc" firstAttribute="centerY" secondItem="h4o-Pu-Aei" secondAttribute="centerY" id="D7r-X5-bYB"/>
+                <constraint firstItem="wiM-Sn-8Oc" firstAttribute="height" secondItem="h4o-Pu-Aei" secondAttribute="height" multiplier="0.95" id="cqL-r8-UXd"/>
+                <constraint firstItem="wiM-Sn-8Oc" firstAttribute="centerX" secondItem="h4o-Pu-Aei" secondAttribute="centerX" id="fqO-lL-PBO"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="digitButtons" destination="0oX-Dc-xCY" collectionClass="NSMutableArray" id="zoh-eE-O0z"/>
+                <outletCollection property="digitButtons" destination="WUe-ey-GrB" collectionClass="NSMutableArray" id="cYY-fN-zOR"/>
+                <outletCollection property="digitButtons" destination="MCb-aW-CEX" collectionClass="NSMutableArray" id="G7T-RJ-vtL"/>
+                <outletCollection property="digitButtons" destination="6wj-q6-vpf" collectionClass="NSMutableArray" id="PJg-6x-tpX"/>
+                <outletCollection property="digitButtons" destination="ZZt-6E-8M7" collectionClass="NSMutableArray" id="0rV-Bl-RNR"/>
+                <outletCollection property="digitButtons" destination="L2P-pj-6k4" collectionClass="NSMutableArray" id="B86-Po-4IH"/>
+                <outletCollection property="digitButtons" destination="qzj-I8-ML3" collectionClass="NSMutableArray" id="pOl-N6-ukT"/>
+                <outletCollection property="digitButtons" destination="6Db-Ag-Vjh" collectionClass="NSMutableArray" id="ZjE-xP-yXq"/>
+                <outletCollection property="digitButtons" destination="8O2-Hh-k2r" collectionClass="NSMutableArray" id="Ntr-nj-KPH"/>
+                <outletCollection property="actionButtons" destination="aey-AX-Q46" collectionClass="NSMutableArray" id="Qsy-yI-nTv"/>
+                <outletCollection property="actionButtons" destination="h9K-aC-plc" collectionClass="NSMutableArray" id="TJw-jW-heO"/>
+                <outletCollection property="actionButtons" destination="7dc-Tp-EWd" collectionClass="NSMutableArray" id="Ag0-Pk-ivc"/>
+                <outletCollection property="digitButtons" destination="0GJ-yV-KOK" collectionClass="NSMutableArray" id="snA-nR-x9w"/>
+            </connections>
+            <point key="canvasLocation" x="375" y="-50"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="clear" catalog="system" width="128" height="114"/>
+        <image name="keyboard.chevron.compact.down" catalog="system" width="128" height="91"/>
+    </resources>
+</document>
