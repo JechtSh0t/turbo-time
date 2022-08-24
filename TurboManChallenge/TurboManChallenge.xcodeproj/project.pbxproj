@@ -1,0 +1,463 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A10E13B28B5C4B5004A1F04 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E13A28B5C4B5004A1F04 /* Preferences.swift */; };
+		4A10E13D28B5D5CA004A1F04 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E13C28B5D5CA004A1F04 /* EventView.swift */; };
+		4A10E14228B5E58B004A1F04 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E14128B5E58B004A1F04 /* PreferencesView.swift */; };
+		4A10E14428B5EA06004A1F04 /* IncrementerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E14328B5EA06004A1F04 /* IncrementerView.swift */; };
+		4A10E14728B67AF0004A1F04 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E14628B67AF0004A1F04 /* Color+Extensions.swift */; };
+		4A10E14B28B68776004A1F04 /* BSGAppBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 4A10E14A28B68776004A1F04 /* BSGAppBasics */; };
+		4A10E14D28B68889004A1F04 /* turbo-time.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4A10E14C28B68889004A1F04 /* turbo-time.wav */; };
+		4A10E14F28B69710004A1F04 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E14E28B69710004A1F04 /* Int+Extensions.swift */; };
+		4A72D93D28B5B83E0096BAE0 /* TurboManChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D93C28B5B83E0096BAE0 /* TurboManChallengeApp.swift */; };
+		4A72D93F28B5B83E0096BAE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D93E28B5B83E0096BAE0 /* ContentView.swift */; };
+		4A72D94128B5B83F0096BAE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A72D94028B5B83F0096BAE0 /* Assets.xcassets */; };
+		4A72D94428B5B83F0096BAE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A72D94328B5B83F0096BAE0 /* Preview Assets.xcassets */; };
+		4A72D94B28B5BA6C0096BAE0 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D94A28B5BA6C0096BAE0 /* CountdownView.swift */; };
+		4A72D94F28B5BADC0096BAE0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D94C28B5BADC0096BAE0 /* Game.swift */; };
+		4A72D95128B5BADC0096BAE0 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D94E28B5BADC0096BAE0 /* Speaker.swift */; };
+		4A72D95628B5BB620096BAE0 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D95528B5BB620096BAE0 /* Event.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4A10E13A28B5C4B5004A1F04 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		4A10E13C28B5D5CA004A1F04 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		4A10E14128B5E58B004A1F04 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		4A10E14328B5EA06004A1F04 /* IncrementerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementerView.swift; sourceTree = "<group>"; };
+		4A10E14628B67AF0004A1F04 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		4A10E14C28B68889004A1F04 /* turbo-time.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "turbo-time.wav"; sourceTree = "<group>"; };
+		4A10E14E28B69710004A1F04 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		4A72D93928B5B83E0096BAE0 /* TurboManChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TurboManChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A72D93C28B5B83E0096BAE0 /* TurboManChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurboManChallengeApp.swift; sourceTree = "<group>"; };
+		4A72D93E28B5B83E0096BAE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4A72D94028B5B83F0096BAE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A72D94328B5B83F0096BAE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4A72D94A28B5BA6C0096BAE0 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
+		4A72D94C28B5BADC0096BAE0 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		4A72D94E28B5BADC0096BAE0 /* Speaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
+		4A72D95528B5BB620096BAE0 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4A72D93628B5B83E0096BAE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A10E14B28B68776004A1F04 /* BSGAppBasics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4A10E14028B5E2A6004A1F04 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				4A10E14C28B68889004A1F04 /* turbo-time.wav */,
+				4A72D94028B5B83F0096BAE0 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		4A10E14528B67AE2004A1F04 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4A10E14628B67AF0004A1F04 /* Color+Extensions.swift */,
+				4A10E14E28B69710004A1F04 /* Int+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4A10E14828B684C2004A1F04 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4A72D95228B5BADF0096BAE0 /* App */,
+				4A10E14528B67AE2004A1F04 /* Extensions */,
+				4A72D95428B5BAE70096BAE0 /* Views */,
+				4A72D95328B5BAE30096BAE0 /* Models */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4A72D93028B5B83E0096BAE0 = {
+			isa = PBXGroup;
+			children = (
+				4A72D93B28B5B83E0096BAE0 /* TurboManChallenge */,
+				4A72D93A28B5B83E0096BAE0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4A72D93A28B5B83E0096BAE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4A72D93928B5B83E0096BAE0 /* TurboManChallenge.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A72D93B28B5B83E0096BAE0 /* TurboManChallenge */ = {
+			isa = PBXGroup;
+			children = (
+				4A10E14028B5E2A6004A1F04 /* Assets */,
+				4A10E14828B684C2004A1F04 /* Sources */,
+				4A72D94228B5B83F0096BAE0 /* Preview Content */,
+			);
+			path = TurboManChallenge;
+			sourceTree = "<group>";
+		};
+		4A72D94228B5B83F0096BAE0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				4A72D94328B5B83F0096BAE0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4A72D95228B5BADF0096BAE0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4A72D93C28B5B83E0096BAE0 /* TurboManChallengeApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4A72D95328B5BAE30096BAE0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4A72D95528B5BB620096BAE0 /* Event.swift */,
+				4A72D94C28B5BADC0096BAE0 /* Game.swift */,
+				4A10E13A28B5C4B5004A1F04 /* Preferences.swift */,
+				4A72D94E28B5BADC0096BAE0 /* Speaker.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4A72D95428B5BAE70096BAE0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A72D93E28B5B83E0096BAE0 /* ContentView.swift */,
+				4A72D94A28B5BA6C0096BAE0 /* CountdownView.swift */,
+				4A10E13C28B5D5CA004A1F04 /* EventView.swift */,
+				4A10E14128B5E58B004A1F04 /* PreferencesView.swift */,
+				4A10E14328B5EA06004A1F04 /* IncrementerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4A72D93828B5B83E0096BAE0 /* TurboManChallenge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A72D94728B5B83F0096BAE0 /* Build configuration list for PBXNativeTarget "TurboManChallenge" */;
+			buildPhases = (
+				4A72D93528B5B83E0096BAE0 /* Sources */,
+				4A72D93628B5B83E0096BAE0 /* Frameworks */,
+				4A72D93728B5B83E0096BAE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TurboManChallenge;
+			packageProductDependencies = (
+				4A10E14A28B68776004A1F04 /* BSGAppBasics */,
+			);
+			productName = TurboManChallenge;
+			productReference = 4A72D93928B5B83E0096BAE0 /* TurboManChallenge.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4A72D93128B5B83E0096BAE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					4A72D93828B5B83E0096BAE0 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+				};
+			};
+			buildConfigurationList = 4A72D93428B5B83E0096BAE0 /* Build configuration list for PBXProject "TurboManChallenge" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4A72D93028B5B83E0096BAE0;
+			packageReferences = (
+				4A10E14928B68776004A1F04 /* XCRemoteSwiftPackageReference "bsg-app-basics" */,
+			);
+			productRefGroup = 4A72D93A28B5B83E0096BAE0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4A72D93828B5B83E0096BAE0 /* TurboManChallenge */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4A72D93728B5B83E0096BAE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A72D94428B5B83F0096BAE0 /* Preview Assets.xcassets in Resources */,
+				4A10E14D28B68889004A1F04 /* turbo-time.wav in Resources */,
+				4A72D94128B5B83F0096BAE0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4A72D93528B5B83E0096BAE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A72D94B28B5BA6C0096BAE0 /* CountdownView.swift in Sources */,
+				4A72D95128B5BADC0096BAE0 /* Speaker.swift in Sources */,
+				4A10E14428B5EA06004A1F04 /* IncrementerView.swift in Sources */,
+				4A72D94F28B5BADC0096BAE0 /* Game.swift in Sources */,
+				4A10E13D28B5D5CA004A1F04 /* EventView.swift in Sources */,
+				4A72D93F28B5B83E0096BAE0 /* ContentView.swift in Sources */,
+				4A10E14228B5E58B004A1F04 /* PreferencesView.swift in Sources */,
+				4A72D93D28B5B83E0096BAE0 /* TurboManChallengeApp.swift in Sources */,
+				4A72D95628B5BB620096BAE0 /* Event.swift in Sources */,
+				4A10E14F28B69710004A1F04 /* Int+Extensions.swift in Sources */,
+				4A10E13B28B5C4B5004A1F04 /* Preferences.swift in Sources */,
+				4A10E14728B67AF0004A1F04 /* Color+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		4A72D94528B5B83F0096BAE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4A72D94628B5B83F0096BAE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4A72D94828B5B83F0096BAE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TurboManChallenge/Preview Content\"";
+				DEVELOPMENT_TEAM = K9C8XCSNZZ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brookstreetgames.TurboManChallenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4A72D94928B5B83F0096BAE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TurboManChallenge/Preview Content\"";
+				DEVELOPMENT_TEAM = K9C8XCSNZZ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brookstreetgames.TurboManChallenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4A72D93428B5B83E0096BAE0 /* Build configuration list for PBXProject "TurboManChallenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A72D94528B5B83F0096BAE0 /* Debug */,
+				4A72D94628B5B83F0096BAE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A72D94728B5B83F0096BAE0 /* Build configuration list for PBXNativeTarget "TurboManChallenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A72D94828B5B83F0096BAE0 /* Debug */,
+				4A72D94928B5B83F0096BAE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4A10E14928B68776004A1F04 /* XCRemoteSwiftPackageReference "bsg-app-basics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/brook-street-games/bsg-app-basics.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4A10E14A28B68776004A1F04 /* BSGAppBasics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A10E14928B68776004A1F04 /* XCRemoteSwiftPackageReference "bsg-app-basics" */;
+			productName = BSGAppBasics;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 4A72D93128B5B83E0096BAE0 /* Project object */;
+}

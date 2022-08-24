@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "bsg-app-basics",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/brook-street-games/bsg-app-basics.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f8318979217556e2827804fe1832469247f969dc"
+      }
+    }
+  ],
+  "version" : 2
+}
