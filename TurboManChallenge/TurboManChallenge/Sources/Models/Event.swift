@@ -25,7 +25,7 @@ extension Event {
         Event(isRepeatable: true, involvedPlayers: 1, actionText: "You found the last Turbo Man at Toy Land. %@ gains one point."),
         Event(isRepeatable: true, involvedPlayers: 1, actionText: "Dementor catches %@ and now he must take a shot of his choice in order to escape his lair."),
         
-        Event(isRepeatable: true, involvedPlayers: 1, actionText: "The toy store opens in two minutes, %@ must land a single flip cup on the first try in order to enter the store and receive one point."),
+        Event(isRepeatable: true, involvedPlayers: 1, actionText: "The toy store opens in two minutes. %@ must land a single flip cup on the first try in order to enter the store and receive one point."),
         Event(isRepeatable: true, involvedPlayers: 1, actionText: "You’ve been caught driving around traffic on the way to your son’s karate class. Officer Hummel detains %@ and he cannot drink until the start of the next round."),
         Event(isRepeatable: true, involvedPlayers: 1, actionText: "You ruined your son’s Christmas, take one heavy beer and finish it before drinking anything else. Here’s to you %@!"),
         Event(isRepeatable: true, involvedPlayers: 1, actionText: "Oh no!! %@ has been caught by the Demon Team. Lose one point."),
@@ -37,6 +37,6 @@ extension Event {
         
         Event(isRepeatable: true, involvedPlayers: 2, actionText: "They have one more Turbo Man at the radio station on Wabasha Street. %@ and %@ have a chug off to see who gets there first. The winner gets one point."),
         
-        Event(isRepeatable: false, involvedPlayers: 1, actionText: "%@ goes to try one of Liz’s cookies and burns thier hand. Accept the One Chip Challenge or lose three points as forfeit.")
+        Event(isRepeatable: false, involvedPlayers: 1, actionText: "%@ goes to try one of Liz’s cookies and burns their hand. Accept the One Chip Challenge or lose three points as forfeit.")
     ]
 }

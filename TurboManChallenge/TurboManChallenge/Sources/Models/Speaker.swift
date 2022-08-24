@@ -38,6 +38,8 @@ struct Speaker {
     ///
     /// Causes speaker to start reading the specified string.
     ///
+    /// - parameter text: The text to be spoken.
+    ///
     func speak(_ text: String) {
         
         stop()
@@ -50,7 +52,7 @@ struct Speaker {
     }
     
     ///
-    /// Stops speaker dead in thier tracks.
+    /// Stop the speaker.
     ///
     func stop() {
         synthesizer.stopSpeaking(at: .immediate)

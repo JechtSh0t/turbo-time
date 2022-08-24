@@ -14,10 +14,9 @@ final class Game: ObservableObject {
 
     // MARK: - Game Configuration -
     
-    private let players: [String]
     private var eventPool: [Event]
-    @Published var preferences: Preferences {
-        didSet { UserDefaults.standard.setObject(preferences, forKey: "preferences") }
+    @Published var configuration: Configuration {
+        didSet { UserDefaults.standard.setObject(configuration, forKey: "configuration") }
     }
     
     // MARK: - Properties -
@@ -30,11 +29,10 @@ final class Game: ObservableObject {
     
     // MARK: - Initializers -
     
-    init(players: [String], eventPool: [Event], preferences: Preferences = .default) {
+    init(eventPool: [Event], configuration: Configuration = .default) {
         
-        self.players = players
         self.eventPool = eventPool
-        self.preferences = preferences
+        self.configuration = configuration
     }
 }
 
@@ -42,10 +40,13 @@ final class Game: ObservableObject {
 
 extension Game {
     
+    ///
+    /// Begin countdown to the next set of events.
+    ///
     func startCountdown() {
         
         guard !countdownIsActive else { return }
-        countdownTime = Int.random(in: preferences.minRoundTime...preferences.maxRoundTime)
+        countdownTime = Int.random(in: configuration.minRoundTime...configuration.maxRoundTime)
         
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
             
@@ -58,6 +59,9 @@ extension Game {
         })
     }
     
+    ///
+    /// Stop the current countdown.
+    ///
     func stopCountdown() {
         
         timer?.invalidate()
@@ -70,15 +74,20 @@ extension Game {
 
 extension Game {
     
+    ///
+    /// Generate a set of events that will occur when the countdown completes.
+    ///
+    /// - returns: One round worth of generated events.
+    ///
     private func generateEvents() -> [String] {
         
         var events = [String]()
         
-        for _ in 1...preferences.eventsPerRound {
+        for _ in 1...configuration.eventsPerRound {
             
             let eventIndex = Int.random(in: 0..<eventPool.count)
             let event = eventPool[eventIndex]
-            var availablePlayers = players
+            var availablePlayers = configuration.players
             
             let eventMessage = String(format: "\(event.actionText)", selectPlayer(from: &availablePlayers), selectPlayer(from: &availablePlayers))
             if !event.isRepeatable { eventPool.remove(at: eventIndex) }
@@ -88,6 +97,12 @@ extension Game {
         return events
     }
     
+    ///
+    /// Select a player for an event. Ensures the same player cannot be selected twice.
+    ///
+    /// - parameter availablePlayers: The players who have not yet been selected.
+    /// - returns: A newly selected player.
+    ///
     private func selectPlayer(from availablePlayers: inout [String]) -> String {
         
         let randomIndex = Int.random(in: 0..<availablePlayers.count)

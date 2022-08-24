@@ -35,7 +35,7 @@ struct CountdownView: View {
                             .font(.custom("Chalkduster", size: 30.0))
                             .foregroundColor(.text)
                     }
-                    if game.preferences.showTimer && game.countdownIsActive {
+                    if game.configuration.showTimer && game.countdownIsActive {
                         Text(game.countdownTime.timeFormatted ?? "")
                             .font(.custom("Chalkduster", size: 60.0))
                             .foregroundColor(.text)
@@ -74,7 +74,7 @@ struct ActionButton: View {
 struct CountdownView_Previews: PreviewProvider {
     
     static var previews: some View {
-        CountdownView(game: Game(players: [], eventPool: Event.all)).preferredColorScheme(.light)
-        CountdownView(game: Game(players: [], eventPool: Event.all)).preferredColorScheme(.dark)
+        CountdownView(game: Game(eventPool: Event.all)).preferredColorScheme(.light)
+        CountdownView(game: Game(eventPool: Event.all)).preferredColorScheme(.dark)
     }
 }
