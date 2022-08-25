@@ -24,7 +24,8 @@
 		4A72D94B28B5BA6C0096BAE0 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D94A28B5BA6C0096BAE0 /* CountdownView.swift */; };
 		4A72D94F28B5BADC0096BAE0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D94C28B5BADC0096BAE0 /* Game.swift */; };
 		4A72D95128B5BADC0096BAE0 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D94E28B5BADC0096BAE0 /* Speaker.swift */; };
-		4A72D95628B5BB620096BAE0 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D95528B5BB620096BAE0 /* Event.swift */; };
+		4A72D95628B5BB620096BAE0 /* EventBlueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D95528B5BB620096BAE0 /* EventBlueprint.swift */; };
+		4AE85A7828B6EADF0075D2ED /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE85A7728B6EADF0075D2ED /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +46,8 @@
 		4A72D94A28B5BA6C0096BAE0 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		4A72D94C28B5BADC0096BAE0 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		4A72D94E28B5BADC0096BAE0 /* Speaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
-		4A72D95528B5BB620096BAE0 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		4A72D95528B5BB620096BAE0 /* EventBlueprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBlueprint.swift; sourceTree = "<group>"; };
+		4AE85A7728B6EADF0075D2ED /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +145,8 @@
 		4A72D95328B5BAE30096BAE0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4A72D95528B5BB620096BAE0 /* Event.swift */,
+				4AE85A7728B6EADF0075D2ED /* Event.swift */,
+				4A72D95528B5BB620096BAE0 /* EventBlueprint.swift */,
 				4A72D94C28B5BADC0096BAE0 /* Game.swift */,
 				4A10E13A28B5C4B5004A1F04 /* Configuration.swift */,
 				4A72D94E28B5BADC0096BAE0 /* Speaker.swift */,
@@ -245,13 +248,14 @@
 				4A72D95128B5BADC0096BAE0 /* Speaker.swift in Sources */,
 				4A10E14428B5EA06004A1F04 /* IncrementerView.swift in Sources */,
 				4A72D94F28B5BADC0096BAE0 /* Game.swift in Sources */,
+				4AE85A7828B6EADF0075D2ED /* Event.swift in Sources */,
 				4A10E13D28B5D5CA004A1F04 /* EventView.swift in Sources */,
 				4A72D93F28B5B83E0096BAE0 /* ContentView.swift in Sources */,
 				4A10E14228B5E58B004A1F04 /* ConfigurationView.swift in Sources */,
 				4A72D93D28B5B83E0096BAE0 /* TurboManChallengeApp.swift in Sources */,
 				4A10E15128B6ADEE004A1F04 /* PlayersView.swift in Sources */,
 				4A10E15628B6C451004A1F04 /* AlertView.swift in Sources */,
-				4A72D95628B5BB620096BAE0 /* Event.swift in Sources */,
+				4A72D95628B5BB620096BAE0 /* EventBlueprint.swift in Sources */,
 				4A10E14F28B69710004A1F04 /* Int+Extensions.swift in Sources */,
 				4A10E13B28B5C4B5004A1F04 /* Configuration.swift in Sources */,
 				4A10E14728B67AF0004A1F04 /* Color+Extensions.swift in Sources */,

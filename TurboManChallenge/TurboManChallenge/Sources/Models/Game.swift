@@ -14,7 +14,7 @@ final class Game: ObservableObject {
 
     // MARK: - Game Configuration -
     
-    private var eventPool: [Event]
+    private var eventBlueprints: [EventBlueprint]
     @Published var configuration: Configuration {
         didSet { UserDefaults.standard.setObject(configuration, forKey: "configuration") }
     }
@@ -25,13 +25,13 @@ final class Game: ObservableObject {
     @Published private(set) var countdownTime: Int = 0
     var countdownIsActive: Bool { timer?.isValid ?? false }
     
-    private(set) var events = [String]()
+    private(set) var events = [Event]()
     
     // MARK: - Initializers -
     
-    init(eventPool: [Event], configuration: Configuration = .default) {
+    init(eventPool: [EventBlueprint], configuration: Configuration = .default) {
         
-        self.eventPool = eventPool
+        self.eventBlueprints = eventPool
         self.configuration = configuration
     }
 }
@@ -79,22 +79,24 @@ extension Game {
     ///
     /// - returns: One round worth of generated events.
     ///
-    private func generateEvents() -> [String] {
+    private func generateEvents() -> [Event] {
         
-        var events = [String]()
-        
-        for _ in 1...configuration.eventsPerRound {
-            
-            let eventIndex = Int.random(in: 0..<eventPool.count)
-            let event = eventPool[eventIndex]
+        (1...configuration.eventsPerRound).map { _ in
+            let blueprintIndex = Int.random(in: 0..<eventBlueprints.count)
+            let blueprint = eventBlueprints[blueprintIndex]
             var availablePlayers = configuration.players
             
-            let eventMessage = String(format: "\(event.actionText)", selectPlayer(from: &availablePlayers), selectPlayer(from: &availablePlayers))
-            if !event.isRepeatable { eventPool.remove(at: eventIndex) }
-            events.append(eventMessage)
+            var selectedPlayers = [String]()
+            if blueprint.playersRequired > 0 {
+                for _ in 1...blueprint.playersRequired {
+                    selectedPlayers.append(selectPlayer(from: &availablePlayers))
+                }
+            }
+            
+            let event = Event(blueprintText: blueprint.text, players: selectedPlayers)
+            if !blueprint.isRepeatable { eventBlueprints.remove(at: blueprintIndex) }
+            return event
         }
-        
-        return events
     }
     
     ///

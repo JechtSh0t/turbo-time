@@ -14,7 +14,7 @@ struct ContentView: View {
     
     // MARK: - Properties -
     
-    @StateObject var game = Game(eventPool: Event.all, configuration: .saved)
+    @StateObject var game = Game(eventPool: EventBlueprint.all, configuration: .saved)
     
     // MARK: - UI -
     

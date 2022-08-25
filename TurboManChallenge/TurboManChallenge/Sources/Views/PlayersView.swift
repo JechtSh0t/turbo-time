@@ -51,6 +51,7 @@ struct EntryView: View {
     var body: some View {
         HStack {
             TextField("New player", text: $newPlayer)
+                .font(.callout)
                 .foregroundColor(Color.alertText)
             Spacer()
             Button(action: {
@@ -70,6 +71,7 @@ struct PlayerRow: View {
     
     var body: some View {
         Text(name)
+            .font(.callout)
             .foregroundColor(Color.alertText)
             .listRowSeparator(.hidden)
     }

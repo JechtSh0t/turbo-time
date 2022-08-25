@@ -74,7 +74,7 @@ struct ActionButton: View {
 struct CountdownView_Previews: PreviewProvider {
     
     static var previews: some View {
-        CountdownView(game: Game(eventPool: Event.all)).preferredColorScheme(.light)
-        CountdownView(game: Game(eventPool: Event.all)).preferredColorScheme(.dark)
+        CountdownView(game: Game(eventPool: EventBlueprint.all)).preferredColorScheme(.light)
+        CountdownView(game: Game(eventPool: EventBlueprint.all)).preferredColorScheme(.dark)
     }
 }
