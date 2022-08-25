@@ -20,7 +20,7 @@ extension EventBlueprint {
     
     static var all: [EventBlueprint] = [
         
-        EventBlueprint(isRepeatable: true, playersRequired: 0, text: "The leader gets caught stealing Ted’s present for Johnny. It is no longer nestled safely under the tree. Lose one point."),
+        EventBlueprint(isRepeatable: true, playersRequired: 0, text: "The leader gets caught stealing Ted’s present for Johnny. It was nestled safely under the tree. Lose one point."),
         EventBlueprint(isRepeatable: true, playersRequired: 0, text: "Liz lets you drive her and Jamie to the parade after Howard destroys your house. The person in last place gets one point."),
         EventBlueprint(isRepeatable: true, playersRequired: 0, text: "Shit! A flat tire. The leader can not drink until the next round."),
         

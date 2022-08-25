@@ -55,7 +55,6 @@ struct IncrementerView: View {
             .disabled(incrementAvailable)
             .opacity(incrementAvailable ? fadedButtonAlpha : 1.0)
         }
-        .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
     }
     
     ///

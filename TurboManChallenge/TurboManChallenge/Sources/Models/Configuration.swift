@@ -24,5 +24,5 @@ extension Configuration {
     
     static var `default` = Configuration(players: ["Phil", "Matt", "Tom", "Tyler", "James"], showTimer: false, minRoundTime: 1.minutes, maxRoundTime: 5.minutes, eventsPerRound: 1)
     static var test = Configuration(players: ["Phil", "Matt", "Tom", "Tyler", "James"], showTimer: true, minRoundTime: 5, maxRoundTime: 10, eventsPerRound: 2)
-    static var saved: Configuration { UserDefaults.standard.getObject(Configuration.self, forKey: "configuration") ?? .default }
+    static var saved: Configuration? { UserDefaults.standard.getObject(Configuration.self, forKey: "configuration") }
 }

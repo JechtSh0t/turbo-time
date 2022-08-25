@@ -24,7 +24,7 @@ struct CountdownView: View {
     var body: some View {
         
         ZStack {
-            Color.christmasRed
+            Color.mainBackground
             VStack {
                 if eventIsActive {
                     EventView(events: game.events, isVisible: $eventIsActive)
@@ -41,7 +41,6 @@ struct CountdownView: View {
                             .foregroundColor(.text)
                     }
                     ActionButton(game: game)
-                        .frame(width: 100, height: 100)
                 }
             }
             .padding(.horizontal)
@@ -66,6 +65,7 @@ struct ActionButton: View {
             Image(systemName: game.countdownIsActive ? "stop.circle.fill" : "play.circle.fill")
                 .resizable()
                 .scaledToFit()
+                .frame(width: game.countdownIsActive ? 100 : 150, height: game.countdownIsActive ? 100 : 150)
         })
         .foregroundColor(.text)
     }

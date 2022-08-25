@@ -32,6 +32,8 @@ struct EventView: View {
                 buildDisplayText(for: currentEvent)
                     .font(.callout)
                     .multilineTextAlignment(.center)
+            } else {
+                Image("Howard")
             }
             
         }, buttonText: currentEvent == nil ? "Start Events" : "Continue", buttonAction: {
@@ -65,7 +67,7 @@ extension EventView {
         var text = Text(components.removeFirst())
         
         while !players.isEmpty && !components.isEmpty {
-            text = text + Text(players.removeFirst()).foregroundColor(.christmasRed).fontWeight(.heavy)
+            text = text + Text(players.removeFirst()).foregroundColor(.accentColor).font(.custom("Chalkduster", size: 16)).fontWeight(.heavy)
             text = text + Text(components.removeFirst()).foregroundColor(.alertText)
         }
         return text
@@ -76,18 +78,18 @@ struct EventView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        let longestBlueprint = EventBlueprint.all.max { $0.text.count < $1.text.count }!
-        let longestEvent = Event(blueprintText: longestBlueprint.text, players: Configuration.default.players)
+        let blueprint = EventBlueprint.all.max { $0.text.count < $1.text.count }!
+        let event = Event(blueprintText: blueprint.text, players: Array(repeating: "Player", count: blueprint.playersRequired))
         
-        VStack {
+        VStack(spacing: 20) {
             EventView(events: [], isVisible: .constant(true))
-            EventView(currentEvent: longestEvent, events: [longestEvent], isVisible: .constant(true))
+            EventView(currentEvent: event, events: [event], isVisible: .constant(true))
         }
         .preferredColorScheme(.light)
         
-        VStack {
+        VStack(spacing: 20) {
             EventView(events: [], isVisible: .constant(true))
-            EventView(currentEvent: longestEvent, events: [longestEvent], isVisible: .constant(true))
+            EventView(currentEvent: event, events: [event], isVisible: .constant(true))
         }
         .preferredColorScheme(.dark)
     }

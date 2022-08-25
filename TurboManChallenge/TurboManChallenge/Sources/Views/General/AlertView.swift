@@ -29,7 +29,7 @@ struct AlertView<Content: View>: View {
                 Text(title)
                     .font(.title2)
                     .fontWeight(.heavy)
-                    .foregroundColor(.alertText)
+                    .foregroundColor(.alertTitle)
             }
             
             content
@@ -42,17 +42,17 @@ struct AlertView<Content: View>: View {
                 Text(buttonText)
                     .font(.title3)
                     .fontWeight(.black)
-                    .foregroundColor(.christmasRed)
+                    .foregroundColor(.alertTitle)
             })
         }
         .frame(maxWidth: 300)
         .padding()
-        .background(Color.alert)
+        .background(Color.alertBackground)
         .cornerRadius(10)
         .transition(.scale)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.alertText, lineWidth: 5)
+                .stroke(Color.alertTitle, lineWidth: 5)
         )
         .shadow(radius: 10, x: 5, y: 5)
     }
@@ -61,8 +61,8 @@ struct AlertView<Content: View>: View {
 struct AlertView_Previews: PreviewProvider {
     
     static var previews: some View {
-        AlertView(content: {}).preferredColorScheme(.light)
-        AlertView(content: {}).preferredColorScheme(.dark)
+        AlertView(title: "New Event!", content: {}).preferredColorScheme(.light)
+        AlertView(title: "New Event!", content: {}).preferredColorScheme(.dark)
     }
 }
 

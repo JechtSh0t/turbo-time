@@ -50,15 +50,21 @@ struct EntryView: View {
     
     var body: some View {
         HStack {
-            TextField("New player", text: $newPlayer)
-                .font(.callout)
-                .foregroundColor(Color.alertText)
+            TextField("New Player", text: $newPlayer)
+                .font(.title3)
+                .foregroundColor(.alertTitle)
+                
             Spacer()
+            
             Button(action: {
                 withAnimation { players.append(newPlayer) }
                 newPlayer.removeAll()
             }, label: {
-                Image(systemName: "plus")
+                Image(systemName: "plus.app.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.alertTitle)
             })
             .disabled(newPlayer.isEmpty)
         }

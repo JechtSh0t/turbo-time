@@ -29,29 +29,38 @@ struct ConfigurationView: View {
     
     var body: some View {
         ZStack {
-            Color.christmasRed
+            Color.mainBackground
             if showPlayersView {
                 PlayersView(players: $configuration.players, isVisible: $showPlayersView)
                         .transition(.scale)
             } else {
-                VStack(spacing: 20) {
-                    ButtonRow(label: "Players", value: String(configuration.players.count)) {
-                        withAnimation { showPlayersView = true }
+                
+                VStack {
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            Spacer()
+                            ButtonRow(label: "Players", value: String(configuration.players.count)) {
+                                withAnimation { showPlayersView = true }
+                            }
+                            ButtonRow(label: "Show Countdown", value: configuration.showTimer ? "YES" : "NO") {
+                                configuration.showTimer.toggle()
+                            }
+                            IncrementerRow(label: "Min Round Time", value: $configuration.minRoundTime, increment: roundIncrement, minimum: minRoundTime, maximum: min(configuration.maxRoundTime, maxRoundTime), display: { $0.timeFormatted ?? "" })
+                            IncrementerRow(label: "Max Round Time", value: $configuration.maxRoundTime, increment: roundIncrement, minimum: max(configuration.minRoundTime, minRoundTime), maximum: maxRoundTime, display: { $0.timeFormatted ?? "" })
+                            IncrementerRow(label: "Events", value: $configuration.eventsPerRound, increment: 1, minimum: minEvents, maximum: maxEvents, display: { String($0) })
+                        }
                     }
-                    ButtonRow(label: "Show Timer", value: configuration.showTimer ? "YES" : "NO") {
-                        configuration.showTimer.toggle()
-                    }
-                    IncrementerRow(label: "Minimum Round Time", value: $configuration.minRoundTime, increment: roundIncrement, minimum: minRoundTime, maximum: min(configuration.maxRoundTime, maxRoundTime), display: { $0.timeFormatted ?? "" })
-                    IncrementerRow(label: "Maximum Round Time", value: $configuration.maxRoundTime, increment: roundIncrement, minimum: max(configuration.minRoundTime, minRoundTime), maximum: maxRoundTime, display: { $0.timeFormatted ?? "" })
-                    IncrementerRow(label: "Events / Round", value: $configuration.eventsPerRound, increment: 1, minimum: minEvents, maximum: maxEvents, display: { String($0) })
-                    Divider()
-                        .frame(height: 1)
-                        .background(Color.text)
-                    Button("Reset") {
+                    
+                    Button(action: {
                         configuration = Configuration.default
-                    }
-                    .font(.custom("Chalkduster", size: 18))
-                    .foregroundColor(.text)
+                    }, label: {
+                        Text("Restore Defaults")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(.text)
+                            .padding()
+                            .border(Color.text, width: 2)
+                    })
                 }
                 .padding()
             }
@@ -66,15 +75,15 @@ struct ButtonRow: View {
     let action: () -> Void
     
     var body: some View {
-        HStack(spacing: 10) {
+        VStack {
             Text(label)
-                .font(.custom("Chalkduster", size: 14))
+                .font(.title3)
+                .fontWeight(.semibold)
                 .foregroundColor(.text)
-            Spacer()
             Button(value) {
                 action()
             }
-            .font(.custom("Chalkduster", size: 18))
+            .font(.custom("Chalkduster", size: 42))
             .foregroundColor(.text)
         }
     }
@@ -91,12 +100,12 @@ struct IncrementerRow: View {
     
     var body: some View {
         
-        HStack {
+        VStack {
             Text(label)
-                .font(.custom("Chalkduster", size: 14))
+                .font(.title3)
+                .fontWeight(.semibold)
                 .foregroundColor(.text)
-            Spacer()
-            IncrementerView(value: $value, increment: increment, minimum: minimum, maximum: maximum, color: .text, fontSize: 24, customFontName: "Chalkduster", display: display)
+            IncrementerView(value: $value, increment: increment, minimum: minimum, maximum: maximum, color: .text, fontSize: 42, customFontName: "Chalkduster", display: display)
         }
     }
 }
