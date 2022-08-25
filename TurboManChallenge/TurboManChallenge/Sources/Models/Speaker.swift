@@ -7,19 +7,39 @@
 
 import AVFoundation
 
-enum VoiceType {
+enum VoiceType: Codable, CaseIterable {
     
-    case australianGirl, britishDude, robotGirl, americanGirl, britishGirl
+    case americanChick, australianChick, britishChick, robotChick
+    case britishDude
+    
+    /// A user-friendly title.
+    var title: String {
+        switch self {
+        case .americanChick: return "US Chick"
+        case .australianChick: return "AU Chick"
+        case .britishChick: return "GB Chick"
+        case .robotChick: return "Robot Chick"
+        case .britishDude: return "GB Dude"
+        }
+    }
     
     /// Voice object.
     var voice: AVSpeechSynthesisVoice? {
         switch self {
-        case .australianGirl: return AVSpeechSynthesisVoice(language: "en-AU")
+        case .americanChick: return AVSpeechSynthesisVoice(language: "en-US")
+        case .australianChick: return AVSpeechSynthesisVoice(language: "en-AU")
+        case .britishChick: return AVSpeechSynthesisVoice(language: "en-ZA")
+        case .robotChick: return AVSpeechSynthesisVoice(language: "en-IE")
         case .britishDude: return AVSpeechSynthesisVoice(language: "en-GB")
-        case .robotGirl: return AVSpeechSynthesisVoice(language: "en-IE")
-        case .americanGirl: return AVSpeechSynthesisVoice(language: "en-US")
-        case .britishGirl: return AVSpeechSynthesisVoice(language: "en-ZA")
         }
+    }
+    
+    /// Cycles through available voices.
+    var next: VoiceType {
+        
+        let voices = VoiceType.allCases
+        let index = voices.firstIndex(of: self)!
+        return index == voices.count - 1 ? voices[0] : voices[index + 1]
     }
 }
 

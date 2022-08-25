@@ -27,7 +27,7 @@ struct CountdownView: View {
             Color.mainBackground
             VStack {
                 if eventIsActive {
-                    EventView(events: game.events, isVisible: $eventIsActive)
+                    EventView(events: game.events, isVisible: $eventIsActive, speaker: Speaker(voiceType: game.configuration.voice))
                             .transition(.scale)
                 } else {
                     if game.countdownIsActive {

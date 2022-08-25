@@ -12,15 +12,12 @@ import SwiftUI
 ///
 struct EventView: View {
     
-    // MARK: - Constants -
-    
-    private let speaker = Speaker(voiceType: .americanGirl)
-    
     // MARK: - Properties -
 
     @State var currentEvent: Event?
     @State var events: [Event]
     @Binding var isVisible: Bool
+    var speaker = Speaker(voiceType: .americanChick)
     
     // MARK: - UI -
     
