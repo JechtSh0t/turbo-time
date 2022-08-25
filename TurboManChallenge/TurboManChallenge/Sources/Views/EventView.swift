@@ -13,70 +13,81 @@ import SwiftUI
 struct EventView: View {
     
     // MARK: - Properties -
-    
-    private let speaker = Speaker(voiceType: .americanGirl)
-    @State private var currentEvent: String?
-    @State var events: [String]
+
+    @State var currentEvent: Event?
+    @State var events: [Event]
     @Binding var isVisible: Bool
+    var speaker = Speaker(voiceType: .americanChick)
     
     // MARK: - UI -
     
     var body: some View {
         
-        VStack(spacing: 10) {
-            
-            Text(currentEvent == nil ? "Turbo Time!" : "New Event!")
-                .font(.title)
-                .fontWeight(.heavy)
-                .foregroundColor(.alertText)
+        AlertView(title: currentEvent == nil ? "Turbo Time!" : "New Event!", content: {
             
             if let currentEvent = currentEvent {
-                Text(currentEvent)
+                buildDisplayText(for: currentEvent)
+                    .font(.callout)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.alertText)
+            } else {
+                Image("Howard")
             }
             
-            Divider()
-            
-            Button(action: {
-                guard !events.isEmpty else {
-                    speaker.stop()
-                    withAnimation { isVisible = false }
-                    return
-                }
+        }, buttonText: currentEvent == nil ? "Start Events" : "Continue", buttonAction: {
+            if let event = events.first {
                 currentEvent = events.removeFirst()
-                speaker.speak(currentEvent!)
-                
-            }, label: {
-                Text(currentEvent == nil ? "Start Events" : "Continue")
-                    .font(.title3)
-                    .fontWeight(.black)
-                    .foregroundColor(.christmasRed)
-            })
-        }
-        .padding()
-        .frame(maxWidth: 300)
-        .background(Color.alert)
-        .shadow(radius: 10, x: 5, y: 5)
-        .cornerRadius(10)
-        .transition(.scale)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.alertText, lineWidth: 5)
-        )
+                speaker.speak(event.text)
+            } else {
+                speaker.stop()
+                withAnimation { isVisible = false }
+            }
+        })
     }
+}
+
+// MARK: - Event Text -
+
+extension EventView {
     
-    private func announceEvent() {
+    ///
+    /// Builds display text highlighting player names in bold red.
+    ///
+    /// - parameter event: The event to build text for.
+    /// - returns: Display text.
+    ///
+    private func buildDisplayText(for event: Event) -> Text {
         
-        guard let event = events.first else { return }
-        speaker.speak(event)
+        var players = event.players
+        var components = event.blueprintText.components(separatedBy: "%@")
+        guard components.count == players.count + 1 else { return Text("") }
+        
+        var text = Text(components.removeFirst())
+        
+        while !players.isEmpty && !components.isEmpty {
+            text = text + Text(players.removeFirst()).foregroundColor(.accentColor).font(.custom("Chalkduster", size: 16)).fontWeight(.heavy)
+            text = text + Text(components.removeFirst()).foregroundColor(.alertText)
+        }
+        return text
     }
 }
 
 struct EventView_Previews: PreviewProvider {
     
     static var previews: some View {
-        EventView(events: [], isVisible: .constant(true)).preferredColorScheme(.light)
-        EventView(events: [], isVisible: .constant(true)).preferredColorScheme(.dark)
+        
+        let blueprint = EventBlueprint.all.max { $0.text.count < $1.text.count }!
+        let event = Event(blueprintText: blueprint.text, players: Array(repeating: "Player", count: blueprint.playersRequired))
+        
+        VStack(spacing: 20) {
+            EventView(events: [], isVisible: .constant(true))
+            EventView(currentEvent: event, events: [event], isVisible: .constant(true))
+        }
+        .preferredColorScheme(.light)
+        
+        VStack(spacing: 20) {
+            EventView(events: [], isVisible: .constant(true))
+            EventView(currentEvent: event, events: [event], isVisible: .constant(true))
+        }
+        .preferredColorScheme(.dark)
     }
 }

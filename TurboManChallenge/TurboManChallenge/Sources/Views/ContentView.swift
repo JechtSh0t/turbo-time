@@ -14,7 +14,7 @@ struct ContentView: View {
     
     // MARK: - Properties -
     
-    @StateObject var game = Game(players: ["Phil", "Matt", "Tom", "Tyler", "James"], eventPool: Event.all, preferences: .saved)
+    @StateObject var game = Game(eventPool: EventBlueprint.all, configuration: .saved ?? .default)
     
     // MARK: - UI -
     
@@ -27,7 +27,7 @@ struct ContentView: View {
                 }
                 .background(Color.tabBar)
             
-            PreferencesView(preferences: $game.preferences)
+            ConfigurationView(configuration: $game.configuration)
                 .tabItem {
                     Image(systemName: "gear")
                 }

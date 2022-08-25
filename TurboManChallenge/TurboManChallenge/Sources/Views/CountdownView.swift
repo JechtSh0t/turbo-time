@@ -24,10 +24,10 @@ struct CountdownView: View {
     var body: some View {
         
         ZStack {
-            Color.christmasRed
+            Color.mainBackground
             VStack {
                 if eventIsActive {
-                    EventView(events: game.events, isVisible: $eventIsActive)
+                    EventView(events: game.events, isVisible: $eventIsActive, speaker: Speaker(voiceType: game.configuration.voice))
                             .transition(.scale)
                 } else {
                     if game.countdownIsActive {
@@ -35,13 +35,12 @@ struct CountdownView: View {
                             .font(.custom("Chalkduster", size: 30.0))
                             .foregroundColor(.text)
                     }
-                    if game.preferences.showTimer && game.countdownIsActive {
+                    if game.configuration.showTimer && game.countdownIsActive {
                         Text(game.countdownTime.timeFormatted ?? "")
                             .font(.custom("Chalkduster", size: 60.0))
                             .foregroundColor(.text)
                     }
                     ActionButton(game: game)
-                        .frame(width: 100, height: 100)
                 }
             }
             .padding(.horizontal)
@@ -66,6 +65,7 @@ struct ActionButton: View {
             Image(systemName: game.countdownIsActive ? "stop.circle.fill" : "play.circle.fill")
                 .resizable()
                 .scaledToFit()
+                .frame(width: game.countdownIsActive ? 100 : 150, height: game.countdownIsActive ? 100 : 150)
         })
         .foregroundColor(.text)
     }
@@ -74,7 +74,7 @@ struct ActionButton: View {
 struct CountdownView_Previews: PreviewProvider {
     
     static var previews: some View {
-        CountdownView(game: Game(players: [], eventPool: Event.all)).preferredColorScheme(.light)
-        CountdownView(game: Game(players: [], eventPool: Event.all)).preferredColorScheme(.dark)
+        CountdownView(game: Game(eventPool: EventBlueprint.all)).preferredColorScheme(.light)
+        CountdownView(game: Game(eventPool: EventBlueprint.all)).preferredColorScheme(.dark)
     }
 }

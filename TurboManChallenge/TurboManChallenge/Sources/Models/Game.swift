@@ -14,10 +14,9 @@ final class Game: ObservableObject {
 
     // MARK: - Game Configuration -
     
-    private let players: [String]
-    private var eventPool: [Event]
-    @Published var preferences: Preferences {
-        didSet { UserDefaults.standard.setObject(preferences, forKey: "preferences") }
+    private var eventBlueprints: [EventBlueprint]
+    @Published var configuration: Configuration {
+        didSet { UserDefaults.standard.setObject(configuration, forKey: "configuration") }
     }
     
     // MARK: - Properties -
@@ -26,15 +25,14 @@ final class Game: ObservableObject {
     @Published private(set) var countdownTime: Int = 0
     var countdownIsActive: Bool { timer?.isValid ?? false }
     
-    private(set) var events = [String]()
+    private(set) var events = [Event]()
     
     // MARK: - Initializers -
     
-    init(players: [String], eventPool: [Event], preferences: Preferences = .default) {
+    init(eventPool: [EventBlueprint], configuration: Configuration = .default) {
         
-        self.players = players
-        self.eventPool = eventPool
-        self.preferences = preferences
+        self.eventBlueprints = eventPool
+        self.configuration = configuration
     }
 }
 
@@ -42,10 +40,13 @@ final class Game: ObservableObject {
 
 extension Game {
     
+    ///
+    /// Begin countdown to the next set of events.
+    ///
     func startCountdown() {
         
         guard !countdownIsActive else { return }
-        countdownTime = Int.random(in: preferences.minRoundTime...preferences.maxRoundTime)
+        countdownTime = Int.random(in: configuration.minRoundTime...configuration.maxRoundTime)
         
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
             
@@ -58,6 +59,9 @@ extension Game {
         })
     }
     
+    ///
+    /// Stop the current countdown.
+    ///
     func stopCountdown() {
         
         timer?.invalidate()
@@ -70,24 +74,37 @@ extension Game {
 
 extension Game {
     
-    private func generateEvents() -> [String] {
+    ///
+    /// Generate a set of events that will occur when the countdown completes.
+    ///
+    /// - returns: One round worth of generated events.
+    ///
+    private func generateEvents() -> [Event] {
         
-        var events = [String]()
-        
-        for _ in 1...preferences.eventsPerRound {
+        (1...configuration.eventsPerRound).map { _ in
+            let blueprintIndex = Int.random(in: 0..<eventBlueprints.count)
+            let blueprint = eventBlueprints[blueprintIndex]
+            var availablePlayers = configuration.players
             
-            let eventIndex = Int.random(in: 0..<eventPool.count)
-            let event = eventPool[eventIndex]
-            var availablePlayers = players
+            var selectedPlayers = [String]()
+            if blueprint.playersRequired > 0 {
+                for _ in 1...blueprint.playersRequired {
+                    selectedPlayers.append(selectPlayer(from: &availablePlayers))
+                }
+            }
             
-            let eventMessage = String(format: "\(event.actionText)", selectPlayer(from: &availablePlayers), selectPlayer(from: &availablePlayers))
-            if !event.isRepeatable { eventPool.remove(at: eventIndex) }
-            events.append(eventMessage)
+            let event = Event(blueprintText: blueprint.text, players: selectedPlayers)
+            if !blueprint.isRepeatable { eventBlueprints.remove(at: blueprintIndex) }
+            return event
         }
-        
-        return events
     }
     
+    ///
+    /// Select a player for an event. Ensures the same player cannot be selected twice.
+    ///
+    /// - parameter availablePlayers: The players who have not yet been selected.
+    /// - returns: A newly selected player.
+    ///
     private func selectPlayer(from availablePlayers: inout [String]) -> String {
         
         let randomIndex = Int.random(in: 0..<availablePlayers.count)
