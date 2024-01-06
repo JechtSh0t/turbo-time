@@ -17,7 +17,9 @@ struct Event: Equatable {
         switch players.count {
         case 0: return blueprintText
         case 1: return String(format: blueprintText, players[0])
-        default: return String(format: blueprintText, players[0], players[1])
+        case 2: return String(format: blueprintText, players[0], players[1])
+        case 3: return String(format: blueprintText, players[0], players[1], players[2])
+        default: fatalError("Too many players to handle!")
         }
     }
 }

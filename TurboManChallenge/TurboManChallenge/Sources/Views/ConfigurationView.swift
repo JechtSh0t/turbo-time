@@ -47,6 +47,9 @@ struct ConfigurationView: View {
                             IncrementerRow(label: "Min Round Time", value: $configuration.minRoundTime, increment: roundIncrement, minimum: minRoundTime, maximum: min(configuration.maxRoundTime, maxRoundTime), display: { $0.timeFormatted ?? "" })
                             IncrementerRow(label: "Max Round Time", value: $configuration.maxRoundTime, increment: roundIncrement, minimum: max(configuration.minRoundTime, minRoundTime), maximum: maxRoundTime, display: { $0.timeFormatted ?? "" })
                             IncrementerRow(label: "Events", value: $configuration.eventsPerRound, increment: 1, minimum: minEvents, maximum: maxEvents, display: { String($0) })
+                            ButtonRow(label: "Craft Special", value: configuration.craftSpecial ? "YES" : "NO") {
+                                configuration.craftSpecial.toggle()
+                            }
                             ButtonRow(label: "Speaker Voice", value: configuration.voice.title) {
                                 configuration.voice = configuration.voice.next
                             }

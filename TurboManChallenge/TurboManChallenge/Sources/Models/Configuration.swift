@@ -18,12 +18,13 @@ struct Configuration: Codable {
     var minRoundTime: Int
     var maxRoundTime: Int
     var eventsPerRound: Int
+    var craftSpecial: Bool
     var voice: VoiceType
 }
 
 extension Configuration {
     
-    static var `default` = Configuration(players: ["Phil", "Matt", "Tom", "Tyler", "James"], showTimer: false, minRoundTime: 1.minutes, maxRoundTime: 5.minutes, eventsPerRound: 1, voice: .americanChick)
-    static var test = Configuration(players: ["Phil", "Matt", "Tom", "Tyler", "James"], showTimer: true, minRoundTime: 5, maxRoundTime: 10, eventsPerRound: 2, voice: .americanChick)
+    static var `default` = Configuration(players: ["Phil", "Matt", "Tom", "Tyler", "James"], showTimer: false, minRoundTime: 1.minutes, maxRoundTime: 5.minutes, eventsPerRound: 1, craftSpecial: false, voice: .americanChick)
+    static var test = Configuration(players: ["Phil", "Matt", "Tom", "Tyler", "James"], showTimer: true, minRoundTime: 5, maxRoundTime: 10, eventsPerRound: 2, craftSpecial: false, voice: .americanChick)
     static var saved: Configuration? { UserDefaults.standard.getObject(Configuration.self, forKey: "configuration") }
 }
