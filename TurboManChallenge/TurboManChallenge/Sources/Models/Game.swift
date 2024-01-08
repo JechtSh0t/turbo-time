@@ -23,7 +23,7 @@ final class Game: ObservableObject {
     
     private var timer: Timer?
     @Published private(set) var countdownTime: Int = 0
-    private var craftSpecialCountdownTime: Int = 10
+    private var craftSpecialCountdownTime: Int = 28.minutes
     var countdownIsActive: Bool { timer?.isValid ?? false }
     
     private(set) var events = [Event]()
@@ -111,7 +111,7 @@ extension Game {
     ///
     private func generateCraftSpecialEvent() -> [Event] {
         
-        let blueprint = EventBlueprint(isRepeatable: false, playersRequired: 3, text: "It's the Craft special. %@, %@, and %@ have to get it on!")
+        let blueprint = EventBlueprint(isRepeatable: false, playersRequired: 3, text: "It's the Craft special. %@, %@, and %@ will do something cool!")
         var availablePlayers = configuration.players
         
         var selectedPlayers = [String]()
