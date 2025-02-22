@@ -10,16 +10,38 @@
 ///
 struct Event: Equatable {
     
-    let blueprintText: String
+    // MARK: - Properties -
+    
+    let blueprint: EventBlueprint
+    let randomNumber: Int?
     let players: [String]
     
     var text: String {
-        switch players.count {
-        case 0: return blueprintText
-        case 1: return String(format: blueprintText, players[0])
-        case 2: return String(format: blueprintText, players[0], players[1])
-        case 3: return String(format: blueprintText, players[0], players[1], players[2])
-        default: fatalError("Too many players to handle!")
+        var text = blueprint.text
+        var players = players
+        while let range = text.range(of: "[player]") {
+            guard !players.isEmpty else { break }
+            text = text.replacingCharacters(in: range, with: players.removeFirst())
         }
+        if let randomNumber = randomNumber {
+            text = text.replacingOccurrences(of: "[number]", with: String(randomNumber))
+        }
+        return text
+    }
+    
+    // MARK: - Initializers -
+    
+    init(
+        blueprint: EventBlueprint,
+        availablePlayers: [String]
+    ) {
+        self.blueprint = blueprint
+        if let range = blueprint.randomNumberRange {
+            self.randomNumber = Int.random(in: range)
+        } else {
+            self.randomNumber = nil
+        }
+        let playerCount = blueprint.text.components(separatedBy: "[player]").count - 1
+        self.players = Array(availablePlayers.shuffled().prefix(playerCount))
     }
 }

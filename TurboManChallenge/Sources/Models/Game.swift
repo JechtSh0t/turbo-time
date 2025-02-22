@@ -31,7 +31,6 @@ final class Game: ObservableObject {
     // MARK: - Initializers -
     
     init(eventPool: [EventBlueprint], configuration: Configuration = .default) {
-        
         self.eventBlueprints = eventPool
         self.configuration = configuration
     }
@@ -45,7 +44,6 @@ extension Game {
     /// Begin countdown to the next set of events.
     ///
     func startCountdown() {
-        
         guard !countdownIsActive else { return }
         countdownTime = Int.random(in: configuration.minRoundTime...configuration.maxRoundTime)
         
@@ -68,7 +66,6 @@ extension Game {
     /// Stop the current countdown.
     ///
     func stopCountdown() {
-        
         timer?.invalidate()
         countdownTime = 0
         objectWillChange.send()
@@ -85,21 +82,14 @@ extension Game {
     /// - returns: One round worth of generated events.
     ///
     private func generateEvents() -> [Event] {
-        
         (1...configuration.eventsPerRound).map { _ in
-            let blueprintIndex = Int.random(in: 0..<eventBlueprints.count)
-            let blueprint = eventBlueprints[blueprintIndex]
-            var availablePlayers = configuration.players
-            
-            var selectedPlayers = [String]()
-            if blueprint.playersRequired > 0 {
-                for _ in 1...blueprint.playersRequired {
-                    selectedPlayers.append(selectPlayer(from: &availablePlayers))
-                }
-            }
-            
-            let event = Event(blueprintText: blueprint.text, players: selectedPlayers)
-            if !blueprint.isRepeatable { eventBlueprints.remove(at: blueprintIndex) }
+            let index = Int.random(in: 0..<eventBlueprints.count)
+            let blueprint = eventBlueprints[index]
+            let event = Event(
+                blueprint: blueprint,
+                availablePlayers: configuration.players
+            )
+            if !blueprint.isRepeatable { eventBlueprints.remove(at: index) }
             return event
         }
     }
@@ -110,30 +100,14 @@ extension Game {
     /// - returns: A sepcial event.
     ///
     private func generateCraftSpecialEvent() -> [Event] {
-        
-        let blueprint = EventBlueprint(isRepeatable: false, playersRequired: 3, text: "It's the Craft special. %@, %@, and %@ will do something cool!")
-        var availablePlayers = configuration.players
-        
-        var selectedPlayers = [String]()
-        if blueprint.playersRequired > 0 {
-            for _ in 1...blueprint.playersRequired {
-                selectedPlayers.append(selectPlayer(from: &availablePlayers))
-            }
-        }
-        
-        let event = Event(blueprintText: blueprint.text, players: selectedPlayers)
+        let blueprint = EventBlueprint(
+            isRepeatable: false,
+            text: "It's the Craft special. %@, %@, and %@ will do something cool!"
+        )
+        let event = Event(
+            blueprint: blueprint,
+            availablePlayers: configuration.players
+        )
         return [event]
-    }
-    
-    ///
-    /// Select a player for an event. Ensures the same player cannot be selected twice.
-    ///
-    /// - parameter availablePlayers: The players who have not yet been selected.
-    /// - returns: A newly selected player.
-    ///
-    private func selectPlayer(from availablePlayers: inout [String]) -> String {
-        
-        let randomIndex = Int.random(in: 0..<availablePlayers.count)
-        return availablePlayers.remove(at: randomIndex)
     }
 }

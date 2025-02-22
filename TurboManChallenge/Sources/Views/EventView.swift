@@ -22,9 +22,7 @@ struct EventView: View {
     // MARK: - UI -
     
     var body: some View {
-        
         AlertView(title: currentEvent == nil ? "Turbo Time!" : "New Event!", content: {
-            
             if let currentEvent = currentEvent {
                 buildDisplayText(for: currentEvent)
                     .font(.callout)
@@ -32,7 +30,6 @@ struct EventView: View {
             } else {
                 Image("Howard")
             }
-            
         }, buttonText: currentEvent == nil ? "Start Events" : "Continue", buttonAction: {
             if let event = events.first {
                 currentEvent = events.removeFirst()
@@ -56,9 +53,8 @@ extension EventView {
     /// - returns: Display text.
     ///
     private func buildDisplayText(for event: Event) -> Text {
-        
         var players = event.players
-        var components = event.blueprintText.components(separatedBy: "%@")
+        var components = event.blueprint.text.components(separatedBy: "[player]")
         guard components.count == players.count + 1 else { return Text("") }
         
         var text = Text(components.removeFirst())
@@ -74,16 +70,16 @@ extension EventView {
 struct EventView_Previews: PreviewProvider {
     
     static var previews: some View {
-        
         let blueprint = EventBlueprint.all.max { $0.text.count < $1.text.count }!
-        let event = Event(blueprintText: blueprint.text, players: Array(repeating: "Player", count: blueprint.playersRequired))
-        
+        let event = Event(
+            blueprint: blueprint,
+            availablePlayers: Array(repeating: "Player", count: 10)
+        )
         VStack(spacing: 20) {
             EventView(events: [], isVisible: .constant(true))
             EventView(currentEvent: event, events: [event], isVisible: .constant(true))
         }
         .preferredColorScheme(.light)
-        
         VStack(spacing: 20) {
             EventView(events: [], isVisible: .constant(true))
             EventView(currentEvent: event, events: [event], isVisible: .constant(true))
