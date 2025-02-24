@@ -15,7 +15,7 @@ struct CountdownView: View {
     
     // MARK: - Properties -
     
-    @ObservedObject var game: Game
+    let game: Game
     @State var soundPlayer = AudioGenerator()
     @State var eventIsActive = false
     
@@ -27,7 +27,7 @@ struct CountdownView: View {
             Color.mainBackground
             VStack {
                 if eventIsActive {
-                    EventView(events: game.events, isVisible: $eventIsActive, speaker: Speaker(voiceType: game.configuration.voice))
+                    EventView(events: game.activeEvents, isVisible: $eventIsActive, speaker: Speaker(voiceType: game.configuration.voice))
                             .transition(.scale)
                 } else {
                     if game.countdownIsActive {
@@ -36,7 +36,7 @@ struct CountdownView: View {
                             .foregroundColor(.text)
                     }
                     if game.configuration.showTimer && game.countdownIsActive {
-                        Text(game.countdownTime.timeFormatted ?? "")
+                        Text(game.roundRemainingTime.timeFormatted ?? "")
                             .font(.custom("Chalkduster", size: 60.0))
                             .foregroundColor(.text)
                     }
@@ -44,19 +44,19 @@ struct CountdownView: View {
                 }
             }
             .padding(.horizontal)
-            .onChange(of: game.events, perform: { _ in
-                if !game.events.isEmpty {
+            .onChange(of: game.activeEvents) { _, _ in
+                if !game.activeEvents.isEmpty {
                     soundPlayer.playSound("turbo-time")
                     withAnimation { eventIsActive = true }
                 }
-            })
+            }
         }
     }
 }
 
 struct ActionButton: View {
     
-    @ObservedObject var game: Game
+    let game: Game
     
     var body: some View {
         Button(action: {
@@ -74,7 +74,7 @@ struct ActionButton: View {
 struct CountdownView_Previews: PreviewProvider {
     
     static var previews: some View {
-        CountdownView(game: Game(eventPool: EventBlueprint.all)).preferredColorScheme(.light)
-        CountdownView(game: Game(eventPool: EventBlueprint.all)).preferredColorScheme(.dark)
+        CountdownView(game: Game(eventBlueprints: EventBlueprint.all)).preferredColorScheme(.light)
+        CountdownView(game: Game(eventBlueprints: EventBlueprint.all)).preferredColorScheme(.dark)
     }
 }

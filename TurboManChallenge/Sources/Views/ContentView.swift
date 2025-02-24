@@ -14,20 +14,18 @@ struct ContentView: View {
     
     // MARK: - Properties -
     
-    @StateObject var game = Game(eventPool: EventBlueprint.all, configuration: .saved ?? .default)
+    let game = Game(eventBlueprints: EventBlueprint.all, configuration: .saved ?? .default)
     
     // MARK: - UI -
     
     var body: some View {
-        
         TabView {
             CountdownView(game: game)
                 .tabItem {
                     Image(systemName: "person.3.fill")
                 }
                 .background(Color.tabBar)
-            
-            ConfigurationView(configuration: $game.configuration)
+            ConfigurationView(configuration: Binding(get: { game.configuration }, set: { game.configuration = $0 }))
                 .tabItem {
                     Image(systemName: "gear")
                 }

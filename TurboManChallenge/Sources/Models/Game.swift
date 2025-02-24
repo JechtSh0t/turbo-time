@@ -10,33 +10,45 @@ import SwiftUI
 ///
 /// A model for the game.
 ///
-final class Game: ObservableObject {
+@Observable
+final class Game {
 
-    // MARK: - Game Configuration -
-    
-    private var eventBlueprints: [EventBlueprint]
-    @Published var configuration: Configuration {
-        didSet { UserDefaults.standard.setObject(configuration, forKey: "configuration") }
-    }
-    
     // MARK: - Properties -
     
-    private var timer: Timer?
-    @Published private(set) var countdownTime: Int = 0
-    private var craftSpecialCountdownTime: Int = 28.minutes
+    private(set) var activeEvents = [Event]()
+    var configuration: Configuration {
+        didSet { UserDefaults.standard.setObject(configuration, forKey: "configuration") }
+    }
     var countdownIsActive: Bool { timer?.isValid ?? false }
-    
-    private(set) var events = [Event]()
+    private var gameTime: Int = 0
+    private var roundEvents: [EventBlueprint]
+    private(set) var roundRemainingTime: Int = 0
+    private let timedEvents: [Int: EventBlueprint]
+    private var timer: Timer?
     
     // MARK: - Initializers -
     
-    init(eventPool: [EventBlueprint], configuration: Configuration = .default) {
-        self.eventBlueprints = eventPool
+    init(eventBlueprints: [EventBlueprint], configuration: Configuration = .default) {
         self.configuration = configuration
+        var roundEvents = [EventBlueprint]()
+        for blueprint in eventBlueprints {
+            switch blueprint.type {
+            case .single: roundEvents.append(blueprint)
+            case .repeatable(let frequency): roundEvents.append(contentsOf: Array(repeating: blueprint, count: frequency.rawValue))
+            case .timed: continue
+            }
+        }
+        self.roundEvents = roundEvents
+        timedEvents = Dictionary(uniqueKeysWithValues: eventBlueprints.compactMap {
+            switch $0.type {
+            case .single, .repeatable: nil
+            case .timed(let time): (Int(time), $0)
+            }
+        })
     }
 }
 
-// MARK: - Round Control -
+// MARK: - Timing -
 
 extension Game {
     
@@ -45,30 +57,32 @@ extension Game {
     ///
     func startCountdown() {
         guard !countdownIsActive else { return }
-        countdownTime = Int.random(in: configuration.minRoundTime...configuration.maxRoundTime)
-        
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
-            
-            self.countdownTime -= 1
-            self.craftSpecialCountdownTime -= 1
-            
-            if self.countdownTime == 0 {
-                self.stopCountdown()
-                self.events = self.generateEvents()
-            } else if self.configuration.craftSpecial && self.craftSpecialCountdownTime == 0 {
-                self.stopCountdown()
-                self.events = self.generateCraftSpecialEvent()
-            }
-        })
+        roundRemainingTime = Int.random(in: configuration.minRoundTime...configuration.maxRoundTime)
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: handleTimerIncrement)
     }
     
     ///
-    /// Stop the current countdown.
+    /// Handle timer increments.
+    /// - parameter timer: A reference to the timer.
+    ///
+    private func handleTimerIncrement(_ timer: Timer) {
+        gameTime += 1
+        roundRemainingTime -= 1
+        if roundRemainingTime == 0 {
+            stopCountdown()
+            activeEvents = generateRoundEvents()
+        } else if let timedEventBlueprint = timedEvents[gameTime] {
+            stopCountdown()
+            activeEvents = [generateEvent(from: timedEventBlueprint)]
+        }
+    }
+    
+    ///
+    /// Stop the game.
     ///
     func stopCountdown() {
         timer?.invalidate()
-        countdownTime = 0
-        objectWillChange.send()
+        roundRemainingTime = 0
     }
 }
 
@@ -77,37 +91,28 @@ extension Game {
 extension Game {
     
     ///
-    /// Generate a set of events that will occur when the countdown completes.
+    /// Generate a set of events that will pop at the end of a round.
+    /// - returns: A round of events.
     ///
-    /// - returns: One round worth of generated events.
-    ///
-    private func generateEvents() -> [Event] {
+    private func generateRoundEvents() -> [Event] {
         (1...configuration.eventsPerRound).map { _ in
-            let index = Int.random(in: 0..<eventBlueprints.count)
-            let blueprint = eventBlueprints[index]
-            let event = Event(
-                blueprint: blueprint,
-                availablePlayers: configuration.players
-            )
-            if !blueprint.isRepeatable { eventBlueprints.remove(at: index) }
+            let index = Int.random(in: 0..<roundEvents.count)
+            let blueprint = roundEvents[index]
+            let event = generateEvent(from: blueprint)
+            if blueprint.type == .single { roundEvents.remove(at: index) }
             return event
         }
     }
     
     ///
-    /// Generate a one-time Craft special event at the 28 minute mark.
+    /// Generate a single of event from a blueprint.
+    /// - parameter blueprint: The blueprint to create the event from.
+    /// - returns: A single event.
     ///
-    /// - returns: A sepcial event.
-    ///
-    private func generateCraftSpecialEvent() -> [Event] {
-        let blueprint = EventBlueprint(
-            isRepeatable: false,
-            text: "It's the Craft special. %@, %@, and %@ will do something cool!"
-        )
-        let event = Event(
+    private func generateEvent(from blueprint: EventBlueprint) -> Event {
+        return Event(
             blueprint: blueprint,
             availablePlayers: configuration.players
         )
-        return [event]
     }
 }

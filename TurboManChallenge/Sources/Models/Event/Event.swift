@@ -6,7 +6,7 @@
 //
 
 ///
-/// A single built event.
+/// A single event.
 ///
 struct Event: Equatable {
     

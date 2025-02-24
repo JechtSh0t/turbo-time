@@ -17,6 +17,8 @@
 		4A10E14F28B69710004A1F04 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E14E28B69710004A1F04 /* Int+Extensions.swift */; };
 		4A10E15128B6ADEE004A1F04 /* PlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E15028B6ADEE004A1F04 /* PlayersView.swift */; };
 		4A10E15628B6C451004A1F04 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E15528B6C451004A1F04 /* AlertView.swift */; };
+		4A3CD1242D6D2ED800F6AEC4 /* EventFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3CD1232D6D2ED400F6AEC4 /* EventFrequency.swift */; };
+		4A6978B42D6A69A500776268 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6978B32D6A69A300776268 /* EventType.swift */; };
 		4A72D93D28B5B83E0096BAE0 /* TurboManChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D93C28B5B83E0096BAE0 /* TurboManChallengeApp.swift */; };
 		4A72D93F28B5B83E0096BAE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D93E28B5B83E0096BAE0 /* ContentView.swift */; };
 		4A72D94128B5B83F0096BAE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A72D94028B5B83F0096BAE0 /* Assets.xcassets */; };
@@ -38,6 +40,8 @@
 		4A10E14E28B69710004A1F04 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		4A10E15028B6ADEE004A1F04 /* PlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersView.swift; sourceTree = "<group>"; };
 		4A10E15528B6C451004A1F04 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		4A3CD1232D6D2ED400F6AEC4 /* EventFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFrequency.swift; sourceTree = "<group>"; };
+		4A6978B32D6A69A300776268 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		4A72D93928B5B83E0096BAE0 /* TurboManChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TurboManChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A72D93C28B5B83E0096BAE0 /* TurboManChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurboManChallengeApp.swift; sourceTree = "<group>"; };
 		4A72D93E28B5B83E0096BAE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +104,17 @@
 			path = General;
 			sourceTree = "<group>";
 		};
+		4A3CD1252D6D2F2200F6AEC4 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				4A3CD1232D6D2ED400F6AEC4 /* EventFrequency.swift */,
+				4A6978B32D6A69A300776268 /* EventType.swift */,
+				4AE85A7728B6EADF0075D2ED /* Event.swift */,
+				4A72D95528B5BB620096BAE0 /* EventBlueprint.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
 		4A72D93028B5B83E0096BAE0 = {
 			isa = PBXGroup;
 			children = (
@@ -145,8 +160,7 @@
 		4A72D95328B5BAE30096BAE0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4AE85A7728B6EADF0075D2ED /* Event.swift */,
-				4A72D95528B5BB620096BAE0 /* EventBlueprint.swift */,
+				4A3CD1252D6D2F2200F6AEC4 /* Event */,
 				4A72D94C28B5BADC0096BAE0 /* Game.swift */,
 				4A10E13A28B5C4B5004A1F04 /* Configuration.swift */,
 				4A72D94E28B5BADC0096BAE0 /* Speaker.swift */,
@@ -258,7 +272,9 @@
 				4A72D95628B5BB620096BAE0 /* EventBlueprint.swift in Sources */,
 				4A10E14F28B69710004A1F04 /* Int+Extensions.swift in Sources */,
 				4A10E13B28B5C4B5004A1F04 /* Configuration.swift in Sources */,
+				4A6978B42D6A69A500776268 /* EventType.swift in Sources */,
 				4A10E14728B67AF0004A1F04 /* Color+Extensions.swift in Sources */,
+				4A3CD1242D6D2ED800F6AEC4 /* EventFrequency.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +411,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -424,6 +441,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
