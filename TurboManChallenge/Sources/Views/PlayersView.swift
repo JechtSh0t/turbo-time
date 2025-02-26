@@ -8,84 +8,111 @@
 import SwiftUI
 
 ///
-/// A list of players. Players can be added or removed.
+/// A view to add or remove players.
 ///
-struct PlayersView: View {
+struct PlayersView: PopoverContentView {
+    
+    enum Action {
+        case doneButtonSelected
+        case playerAdded(String)
+        case playerRemoved(String)
+    }
     
     // MARK: - Properties -
     
-    @Binding var players: [String]
-    @Binding var isVisible: Bool
+    let players: [String]
+    let dismissAction: DoubleOptionalClosure
+    let actionHandler: (Action) -> Void
+    
+    @State private var newPlayer: String = ""
     
     // MARK: - UI -
     
     var body: some View {
-        
-        AlertView(content: {
-            EntryView(players: $players)
-            List(players, id: \.self) { player in
-                PlayerRow(name: player)
-                    .swipeActions(edge: .trailing, content: {
-                        Button(role: .destructive, action: {
-                            guard let index = players.firstIndex(of: player) else { return }
-                            withAnimation { _ = players.remove(at: index) }
-                        }, label: {
-                            Label("Remove", systemImage: "trash")
-                        })
-                    })
+        AlertView(
+            content: {
+                entryView
+                playerListView
+            },
+            buttonAction: {
+                dismissAction? {
+                    actionHandler(.doneButtonSelected)
+                }
             }
-            .listStyle(.plain)
-            .frame(height: 160)
-        }, buttonText: "Done", buttonAction: {
-            withAnimation { isVisible = false }
-        })
-        
+        )
+        .foregroundStyle(Color.text)
+        .frame(height: 300)
     }
 }
 
-struct EntryView: View {
+// MARK: - Entry -
+
+extension PlayersView {
     
-    @Binding var players: [String]
-    @State private var newPlayer: String = ""
-    
-    var body: some View {
+    private var entryView: some View {
         HStack {
-            TextField("New Player", text: $newPlayer)
-                .font(.title3)
-                .foregroundColor(.alertTitle)
-                
+            TextField(
+                "New Player",
+                text: $newPlayer,
+                prompt: Text("New Player").foregroundColor(.text.opacity(0.5))
+            )
+            .tint(.text)
             Spacer()
-            
             Button(action: {
-                withAnimation { players.append(newPlayer) }
+                actionHandler(.playerAdded(newPlayer))
                 newPlayer.removeAll()
             }, label: {
                 Image(systemName: "plus.app.fill")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(.alertTitle)
+                    .frame(width: 24, height: 24)
             })
             .disabled(newPlayer.isEmpty)
+            .opacity(newPlayer.isEmpty ? 0 : 1)
+        }
+        .font(.custom("Lexend", size: 16))
+    }
+}
+
+// MARK: - Players -
+
+extension PlayersView {
+    
+    private var playerListView: some View {
+        List(players, id: \.self) { player in
+            PlayerRow(name: player)
+                .swipeActions(edge: .trailing, content: {
+                    Button(role: .destructive, action: {
+                        guard let index = players.firstIndex(of: player) else { return }
+                        actionHandler(.playerRemoved(players[index]))
+                    }, label: {
+                        Label("Remove", systemImage: "trash")
+                    })
+                })
+        }
+        .listStyle(.plain)
+    }
+    
+    struct PlayerRow: View {
+        
+        var name: String
+        
+        var body: some View {
+            Text(name)
+                .font(.custom("Lexend", size: 16))
+                .listRowSeparator(.hidden)
+                .listRowInsets(EdgeInsets())
+                .listRowBackground(Color.mainBackground)
         }
     }
 }
 
-struct PlayerRow: View {
-    
-    var name: String
-    
-    var body: some View {
-        Text(name)
-            .font(.callout)
-            .foregroundColor(Color.alertText)
-            .listRowSeparator(.hidden)
-    }
-}
+// MARK: - Previews -
 
-struct PlayersView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlayersView(players: .constant(Configuration.default.players), isVisible: .constant(true)).preferredColorScheme(.light)
-        PlayersView(players: .constant(Configuration.default.players), isVisible: .constant(true)).preferredColorScheme(.dark)
-    }
+#Preview {
+    PlayersView(
+        players: Configuration.default.players,
+        dismissAction: { _ in },
+        actionHandler: { _ in }
+    )
 }

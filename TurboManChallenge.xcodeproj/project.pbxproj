@@ -3,56 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A10E13B28B5C4B5004A1F04 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E13A28B5C4B5004A1F04 /* Configuration.swift */; };
-		4A10E13D28B5D5CA004A1F04 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E13C28B5D5CA004A1F04 /* EventView.swift */; };
-		4A10E14228B5E58B004A1F04 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E14128B5E58B004A1F04 /* ConfigurationView.swift */; };
-		4A10E14428B5EA06004A1F04 /* IncrementerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E14328B5EA06004A1F04 /* IncrementerView.swift */; };
-		4A10E14728B67AF0004A1F04 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E14628B67AF0004A1F04 /* Color+Extensions.swift */; };
 		4A10E14B28B68776004A1F04 /* BSGAppBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 4A10E14A28B68776004A1F04 /* BSGAppBasics */; };
-		4A10E14D28B68889004A1F04 /* turbo-time.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4A10E14C28B68889004A1F04 /* turbo-time.wav */; };
-		4A10E14F28B69710004A1F04 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E14E28B69710004A1F04 /* Int+Extensions.swift */; };
-		4A10E15128B6ADEE004A1F04 /* PlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E15028B6ADEE004A1F04 /* PlayersView.swift */; };
-		4A10E15628B6C451004A1F04 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A10E15528B6C451004A1F04 /* AlertView.swift */; };
-		4A3CD1242D6D2ED800F6AEC4 /* EventFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3CD1232D6D2ED400F6AEC4 /* EventFrequency.swift */; };
-		4A6978B42D6A69A500776268 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6978B32D6A69A300776268 /* EventType.swift */; };
-		4A72D93D28B5B83E0096BAE0 /* TurboManChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D93C28B5B83E0096BAE0 /* TurboManChallengeApp.swift */; };
-		4A72D93F28B5B83E0096BAE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D93E28B5B83E0096BAE0 /* ContentView.swift */; };
-		4A72D94128B5B83F0096BAE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A72D94028B5B83F0096BAE0 /* Assets.xcassets */; };
-		4A72D94428B5B83F0096BAE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A72D94328B5B83F0096BAE0 /* Preview Assets.xcassets */; };
-		4A72D94B28B5BA6C0096BAE0 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D94A28B5BA6C0096BAE0 /* CountdownView.swift */; };
-		4A72D94F28B5BADC0096BAE0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D94C28B5BADC0096BAE0 /* Game.swift */; };
-		4A72D95128B5BADC0096BAE0 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D94E28B5BADC0096BAE0 /* Speaker.swift */; };
-		4A72D95628B5BB620096BAE0 /* EventBlueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A72D95528B5BB620096BAE0 /* EventBlueprint.swift */; };
-		4AE85A7828B6EADF0075D2ED /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE85A7728B6EADF0075D2ED /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4A10E13A28B5C4B5004A1F04 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		4A10E13C28B5D5CA004A1F04 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
-		4A10E14128B5E58B004A1F04 /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
-		4A10E14328B5EA06004A1F04 /* IncrementerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementerView.swift; sourceTree = "<group>"; };
-		4A10E14628B67AF0004A1F04 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
-		4A10E14C28B68889004A1F04 /* turbo-time.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "turbo-time.wav"; sourceTree = "<group>"; };
-		4A10E14E28B69710004A1F04 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
-		4A10E15028B6ADEE004A1F04 /* PlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersView.swift; sourceTree = "<group>"; };
-		4A10E15528B6C451004A1F04 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
-		4A3CD1232D6D2ED400F6AEC4 /* EventFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFrequency.swift; sourceTree = "<group>"; };
-		4A6978B32D6A69A300776268 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		4A72D93928B5B83E0096BAE0 /* TurboManChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TurboManChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A72D93C28B5B83E0096BAE0 /* TurboManChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurboManChallengeApp.swift; sourceTree = "<group>"; };
-		4A72D93E28B5B83E0096BAE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		4A72D94028B5B83F0096BAE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4A72D94328B5B83F0096BAE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4A72D94A28B5BA6C0096BAE0 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
-		4A72D94C28B5BADC0096BAE0 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		4A72D94E28B5BADC0096BAE0 /* Speaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
-		4A72D95528B5BB620096BAE0 /* EventBlueprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBlueprint.swift; sourceTree = "<group>"; };
-		4AE85A7728B6EADF0075D2ED /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4A3CD2822D6D477B00F6AEC4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 4A72D93828B5B83E0096BAE0 /* TurboManChallenge */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		4A3CD1482D6D31EC00F6AEC4 /* TurboManChallenge */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4A3CD2822D6D477B00F6AEC4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = TurboManChallenge; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4A72D93628B5B83E0096BAE0 /* Frameworks */ = {
@@ -66,59 +40,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4A10E14028B5E2A6004A1F04 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				4A10E14C28B68889004A1F04 /* turbo-time.wav */,
-				4A72D94028B5B83F0096BAE0 /* Assets.xcassets */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		4A10E14528B67AE2004A1F04 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				4A10E14628B67AF0004A1F04 /* Color+Extensions.swift */,
-				4A10E14E28B69710004A1F04 /* Int+Extensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		4A10E14828B684C2004A1F04 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				4A72D95228B5BADF0096BAE0 /* App */,
-				4A10E14528B67AE2004A1F04 /* Extensions */,
-				4A72D95428B5BAE70096BAE0 /* Views */,
-				4A72D95328B5BAE30096BAE0 /* Models */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		4A10E15428B6C439004A1F04 /* General */ = {
-			isa = PBXGroup;
-			children = (
-				4A10E14328B5EA06004A1F04 /* IncrementerView.swift */,
-				4A10E15528B6C451004A1F04 /* AlertView.swift */,
-			);
-			path = General;
-			sourceTree = "<group>";
-		};
-		4A3CD1252D6D2F2200F6AEC4 /* Event */ = {
-			isa = PBXGroup;
-			children = (
-				4A3CD1232D6D2ED400F6AEC4 /* EventFrequency.swift */,
-				4A6978B32D6A69A300776268 /* EventType.swift */,
-				4AE85A7728B6EADF0075D2ED /* Event.swift */,
-				4A72D95528B5BB620096BAE0 /* EventBlueprint.swift */,
-			);
-			path = Event;
-			sourceTree = "<group>";
-		};
 		4A72D93028B5B83E0096BAE0 = {
 			isa = PBXGroup;
 			children = (
-				4A72D93B28B5B83E0096BAE0 /* TurboManChallenge */,
+				4A3CD1482D6D31EC00F6AEC4 /* TurboManChallenge */,
 				4A72D93A28B5B83E0096BAE0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -129,56 +54,6 @@
 				4A72D93928B5B83E0096BAE0 /* TurboManChallenge.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		4A72D93B28B5B83E0096BAE0 /* TurboManChallenge */ = {
-			isa = PBXGroup;
-			children = (
-				4A10E14028B5E2A6004A1F04 /* Assets */,
-				4A10E14828B684C2004A1F04 /* Sources */,
-				4A72D94228B5B83F0096BAE0 /* Preview Content */,
-			);
-			path = TurboManChallenge;
-			sourceTree = "<group>";
-		};
-		4A72D94228B5B83F0096BAE0 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				4A72D94328B5B83F0096BAE0 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		4A72D95228B5BADF0096BAE0 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				4A72D93C28B5B83E0096BAE0 /* TurboManChallengeApp.swift */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
-		4A72D95328B5BAE30096BAE0 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				4A3CD1252D6D2F2200F6AEC4 /* Event */,
-				4A72D94C28B5BADC0096BAE0 /* Game.swift */,
-				4A10E13A28B5C4B5004A1F04 /* Configuration.swift */,
-				4A72D94E28B5BADC0096BAE0 /* Speaker.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		4A72D95428B5BAE70096BAE0 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4A10E15428B6C439004A1F04 /* General */,
-				4A72D93E28B5B83E0096BAE0 /* ContentView.swift */,
-				4A72D94A28B5BA6C0096BAE0 /* CountdownView.swift */,
-				4A10E13C28B5D5CA004A1F04 /* EventView.swift */,
-				4A10E14128B5E58B004A1F04 /* ConfigurationView.swift */,
-				4A10E15028B6ADEE004A1F04 /* PlayersView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +71,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				4A3CD1482D6D31EC00F6AEC4 /* TurboManChallenge */,
+			);
 			name = TurboManChallenge;
 			packageProductDependencies = (
 				4A10E14A28B68776004A1F04 /* BSGAppBasics */,
@@ -212,7 +90,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					4A72D93828B5B83E0096BAE0 = {
 						CreatedOnToolsVersion = 13.4;
@@ -245,9 +123,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A72D94428B5B83F0096BAE0 /* Preview Assets.xcassets in Resources */,
-				4A10E14D28B68889004A1F04 /* turbo-time.wav in Resources */,
-				4A72D94128B5B83F0096BAE0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,23 +133,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A72D94B28B5BA6C0096BAE0 /* CountdownView.swift in Sources */,
-				4A72D95128B5BADC0096BAE0 /* Speaker.swift in Sources */,
-				4A10E14428B5EA06004A1F04 /* IncrementerView.swift in Sources */,
-				4A72D94F28B5BADC0096BAE0 /* Game.swift in Sources */,
-				4AE85A7828B6EADF0075D2ED /* Event.swift in Sources */,
-				4A10E13D28B5D5CA004A1F04 /* EventView.swift in Sources */,
-				4A72D93F28B5B83E0096BAE0 /* ContentView.swift in Sources */,
-				4A10E14228B5E58B004A1F04 /* ConfigurationView.swift in Sources */,
-				4A72D93D28B5B83E0096BAE0 /* TurboManChallengeApp.swift in Sources */,
-				4A10E15128B6ADEE004A1F04 /* PlayersView.swift in Sources */,
-				4A10E15628B6C451004A1F04 /* AlertView.swift in Sources */,
-				4A72D95628B5BB620096BAE0 /* EventBlueprint.swift in Sources */,
-				4A10E14F28B69710004A1F04 /* Int+Extensions.swift in Sources */,
-				4A10E13B28B5C4B5004A1F04 /* Configuration.swift in Sources */,
-				4A6978B42D6A69A500776268 /* EventType.swift in Sources */,
-				4A10E14728B67AF0004A1F04 /* Color+Extensions.swift in Sources */,
-				4A3CD1242D6D2ED800F6AEC4 /* EventFrequency.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +175,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -377,6 +236,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -406,6 +266,7 @@
 				DEVELOPMENT_TEAM = K9C8XCSNZZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TurboManChallenge/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -436,6 +297,7 @@
 				DEVELOPMENT_TEAM = K9C8XCSNZZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TurboManChallenge/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

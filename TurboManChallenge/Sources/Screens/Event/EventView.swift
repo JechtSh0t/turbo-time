@@ -1,0 +1,94 @@
+//
+//  EventView.swift
+//
+//  Created by JechtSh0t on 8/23/22.
+//  Copyright © 2022 Brook Street Games. All rights reserved.
+//
+
+import SwiftUI
+
+///
+/// A view for displaying a round of events.
+///
+struct EventView: View {
+    
+    // MARK: - Properties -
+
+    let viewModel: EventViewModel
+    
+    // MARK: - UI -
+    
+    var body: some View {
+        VStack(spacing: 24) {
+            titleView
+                .foregroundColor(.text)
+            imageView
+            eventTextView
+            Spacer()
+            nextButton
+                .foregroundColor(.text)
+        }
+        .padding(24)
+        .screenBackground()
+        .onAppear(perform: viewModel.screenAppeared)
+    }
+}
+
+// MARK: - Subviews -
+
+extension EventView {
+    
+    private var titleView: some View {
+        Text(viewModel.titleText)
+            .font(.custom("Lexend", size: 32))
+            .bold()
+    }
+    
+    private var imageView: some View {
+        Image("Howard")
+            .resizable()
+            .aspectRatio(1, contentMode: .fit)
+            .cornerRadius(24)
+    }
+    
+    private var eventTextView: some View {
+        viewModel.eventText
+            .font(.custom("Lexend", size: 20))
+            .multilineTextAlignment(.center)
+    }
+    
+    private var nextButton: some View {
+        Button(action: {
+            viewModel.buttonSelected()
+        }, label: {
+            Text(viewModel.buttonText)
+                .font(.custom("Lexend", size: 32))
+                .bold()
+        })
+    }
+}
+
+// MARK: - Previews -
+
+#Preview("Intro") {
+    let viewModel = EventViewModel(
+        events: [
+            Event(blueprint: EventBlueprint.all[0], availablePlayers: [])
+        ],
+        audioService: AudioServiceMock(),
+        coordinator: nil
+    )
+    EventView(viewModel: viewModel)
+}
+
+#Preview("Event") {
+    let viewModel = EventViewModel(
+        events: [
+            Event(blueprint: EventBlueprint.all[1], availablePlayers: ["Howard"])
+        ],
+        audioService: AudioServiceMock(),
+        coordinator: nil
+    )
+    viewModel.buttonSelected()
+    return EventView(viewModel: viewModel)
+}

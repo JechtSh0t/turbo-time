@@ -8,11 +8,7 @@
 import SwiftUI
 
 extension Color {
-    
     static let mainBackground = Color("MainBackgroundColor")
     static let tabBar = Color("TabBarColor")
     static let text = Color("TextColor")
-    static let alertTitle = Color("AlertTitleColor")
-    static let alertBackground = Color("AlertBackgroundColor")
-    static let alertText = Color("AlertTextColor")
 }

@@ -1,5 +1,5 @@
 //
-//  Game.swift
+//  GameService.swift
 //
 //  Created by JechtSh0t on 8/23/22.
 //  Copyright © 2022 Brook Street Games. All rights reserved.
@@ -7,29 +7,52 @@
 
 import SwiftUI
 
+protocol GameServiceProtocol {
+    var state: GameState { get }
+    func start()
+    func stop()
+    func reset()
+}
+
+struct GameServiceMock: GameServiceProtocol {
+    var state: GameState
+    init(state: GameState) {
+        self.state = state
+    }
+    func start() {}
+    func stop() {}
+    func reset() {}
+}
+
 ///
-/// A model for the game.
+/// A service for controlling the game.
 ///
 @Observable
-final class Game {
-
-    // MARK: - Properties -
+final class GameService: GameServiceProtocol {
     
-    private(set) var activeEvents = [Event]()
-    var configuration: Configuration {
-        didSet { UserDefaults.standard.setObject(configuration, forKey: "configuration") }
-    }
-    var countdownIsActive: Bool { timer?.isValid ?? false }
+    // MARK: - Properties -
+
+    private var currentEvents: [Event]?
     private var gameTime: Int = 0
     private var roundEvents: [EventBlueprint]
-    private(set) var roundRemainingTime: Int = 0
+    private var roundRemainingTime: Int = 0
+    private(set) var state: GameState = .idle
     private let timedEvents: [Int: EventBlueprint]
     private var timer: Timer?
     
+    private var configuration: Configuration { configurationService.getConfiguration() }
+    
+    // MARK: - Dependencies -
+    
+    private let configurationService: ConfigurationServiceProtocol
+    
     // MARK: - Initializers -
     
-    init(eventBlueprints: [EventBlueprint], configuration: Configuration = .default) {
-        self.configuration = configuration
+    init(
+        eventBlueprints: [EventBlueprint],
+        configurationService: ConfigurationServiceProtocol
+    ) {
+        self.configurationService = configurationService
         var roundEvents = [EventBlueprint]()
         for blueprint in eventBlueprints {
             switch blueprint.type {
@@ -50,14 +73,15 @@ final class Game {
 
 // MARK: - Timing -
 
-extension Game {
+extension GameService {
     
     ///
     /// Begin countdown to the next set of events.
     ///
-    func startCountdown() {
-        guard !countdownIsActive else { return }
+    func start() {
+        stop()
         roundRemainingTime = Int.random(in: configuration.minRoundTime...configuration.maxRoundTime)
+        state = .countdown(roundRemainingTime)
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: handleTimerIncrement)
     }
     
@@ -68,34 +92,43 @@ extension Game {
     private func handleTimerIncrement(_ timer: Timer) {
         gameTime += 1
         roundRemainingTime -= 1
+        state = .countdown(roundRemainingTime)
         if roundRemainingTime == 0 {
-            stopCountdown()
-            activeEvents = generateRoundEvents()
+            stop()
+            state = .events(generateRoundEvents())
         } else if let timedEventBlueprint = timedEvents[gameTime] {
-            stopCountdown()
-            activeEvents = [generateEvent(from: timedEventBlueprint)]
+            stop()
+            state = .events([generateEvent(from: timedEventBlueprint)])
         }
     }
     
     ///
     /// Stop the game.
     ///
-    func stopCountdown() {
+    func stop() {
         timer?.invalidate()
         roundRemainingTime = 0
+        state = .idle
+    }
+    
+    ///
+    /// Called after events complete to reset to idle.
+    ///
+    func reset() {
+        state = .idle
     }
 }
 
 // MARK: - Events -
 
-extension Game {
+extension GameService {
     
     ///
     /// Generate a set of events that will pop at the end of a round.
     /// - returns: A round of events.
     ///
     private func generateRoundEvents() -> [Event] {
-        (1...configuration.eventsPerRound).map { _ in
+        return (1...configuration.eventsPerRound).map { _ in
             let index = Int.random(in: 0..<roundEvents.count)
             let blueprint = roundEvents[index]
             let event = generateEvent(from: blueprint)

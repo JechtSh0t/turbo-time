@@ -21,10 +21,10 @@ struct Event: Equatable {
         var players = players
         while let range = text.range(of: "[player]") {
             guard !players.isEmpty else { break }
-            text = text.replacingCharacters(in: range, with: players.removeFirst())
+            text = text.replacingCharacters(in: range, with: "[\(players.removeFirst())]")
         }
         if let randomNumber = randomNumber {
-            text = text.replacingOccurrences(of: "[number]", with: String(randomNumber))
+            text = text.replacingOccurrences(of: "[number]", with: "[\(randomNumber)]")
         }
         return text
     }
