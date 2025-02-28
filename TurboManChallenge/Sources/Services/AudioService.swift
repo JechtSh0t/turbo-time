@@ -10,13 +10,13 @@ import BSGAppBasics
 
 protocol AudioServiceProtocol {
     func play(_ soundName: String)
-    func speak(_ text: String)
+    func speak(_ text: String, voice: AVSpeechSynthesisVoice)
     func stop()
 }
 
 struct AudioServiceMock: AudioServiceProtocol {
     func play(_ soundName: String) {}
-    func speak(_ text: String) {}
+    func speak(_ text: String, voice: AVSpeechSynthesisVoice) {}
     func stop() {}
 }
 
@@ -27,15 +27,12 @@ struct AudioService: AudioServiceProtocol {
     
     // MARK: - Properties -
     
-    private let voiceType: VoiceType
     private let generator = AudioGenerator()
     private let synthesizer = AVSpeechSynthesizer()
     
     // MARK: - Initializers -
     
-    init(voiceType: VoiceType) {
-        self.voiceType = voiceType
-    }
+    init() {}
 }
 
 // MARK: - Sound -
@@ -59,13 +56,14 @@ extension AudioService {
     ///
     /// Start speaking.
     /// - parameter text: The text to be spoken.
+    /// - parameter voice: The voice to speak in.
     ///
-    func speak(_ text: String) {
+    func speak(_ text: String, voice: AVSpeechSynthesisVoice) {
         stop()
         let utterance = AVSpeechUtterance(string: text.speechFormatted)
         utterance.rate = 0.5
         utterance.pitchMultiplier = 1.0
-        utterance.voice = voiceType.voice
+        utterance.voice = voice
         synthesizer.speak(utterance)
     }
     

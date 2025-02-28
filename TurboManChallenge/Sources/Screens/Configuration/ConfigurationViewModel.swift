@@ -83,7 +83,7 @@ final class ConfigurationViewModel: ViewModel {
             id: Constant.eventsKey,
             title: "Events",
             description: "Tap to change event frequencies.",
-            display: String(configuration.blueprints.count)
+            display: String(configuration.blueprints.filter({ $0.isEnabled }).count)
         ),
         InputConfigurationProperty(
             id: Constant.playersKey,
@@ -139,15 +139,18 @@ final class ConfigurationViewModel: ViewModel {
     
     // MARK: - Dependencies -
     
+    private let audioService: AudioServiceProtocol
     private let configurationService: ConfigurationServiceProtocol
     private weak var coordinator: RootCoordinator?
     
     // MARK: - Initializers -
     
     init(
+        audioService: AudioServiceProtocol,
         configurationService: ConfigurationServiceProtocol,
         coordinator: RootCoordinator?
     ) {
+        self.audioService = audioService
         self.configuration = configurationService.getConfiguration()
         self.configurationService = configurationService
         self.coordinator = coordinator
@@ -157,6 +160,10 @@ final class ConfigurationViewModel: ViewModel {
 // MARK: - View Actions -
 
 extension ConfigurationViewModel {
+    
+    func screenAppeared() {
+        configuration = configurationService.getConfiguration()
+    }
     
     func incrementPropertyChanged(_ property: IncrementConfigurationProperty, to newValue: Int) {
         switch property.id {
@@ -199,8 +206,9 @@ extension ConfigurationViewModel {
             guard let nextOption = property.currentOption.next as? BooleanToggle else { break }
             configuration.showCountdown = nextOption.value
         case Constant.speakerKey:
-            guard let nextOption = property.currentOption.next as? VoiceType else { break }
+            guard let nextOption = property.currentOption.next as? Voice, let voice = nextOption.speechVoice else { break }
             configuration.voice = nextOption
+            audioService.speak(nextOption.display, voice: voice)
         default: break
         }
         configurationService.setConfiguration(configuration)

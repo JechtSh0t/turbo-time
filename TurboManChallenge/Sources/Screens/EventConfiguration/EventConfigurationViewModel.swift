@@ -91,14 +91,6 @@ extension EventConfigurationViewModel {
 
 extension EventConfigurationViewModel {
     
-    func blueprintIsEnabled(_ blueprint: EventBlueprint) -> Bool {
-        switch blueprint.type {
-        case .single(let frequency): frequency != .off
-        case .repeatable(let frequency): frequency != .off
-        case .timed(_, let isEnabled): isEnabled
-        }
-    }
-    
     func valueDisplay(for blueprint: EventBlueprint) -> String {
         switch blueprint.type {
         case .single(let frequency): return frequency.display

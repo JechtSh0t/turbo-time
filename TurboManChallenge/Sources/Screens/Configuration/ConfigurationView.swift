@@ -28,6 +28,7 @@ struct ConfigurationView: View {
         .screenBackground()
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear(perform: viewModel.screenAppeared)
         .customPopover(
             isPresented: Binding(
                 get: { viewModel.shouldShowPlayers },
@@ -161,6 +162,7 @@ extension ConfigurationView {
 
 #Preview {
     let viewModel = ConfigurationViewModel(
+        audioService: AudioServiceMock(),
         configurationService: ConfigurationServiceMock(),
         coordinator: nil
     )

@@ -19,6 +19,14 @@ struct EventBlueprint: Codable, Equatable, Hashable, Identifiable {
     let text: String
     let type: EventType
     
+    var isEnabled: Bool {
+        switch type {
+        case .single(let frequency): frequency != .off
+        case .repeatable(let frequency): frequency != .off
+        case .timed(_, let isEnabled): isEnabled
+        }
+    }
+    
     // MARK: - Initializers -
     
     init(

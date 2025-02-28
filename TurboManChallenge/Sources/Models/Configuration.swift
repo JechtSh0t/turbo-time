@@ -18,7 +18,7 @@ struct Configuration: Codable {
     var minRoundTime: Int
     var players: [String]
     var showCountdown: Bool
-    var voice: VoiceType
+    var voice: Voice
 }
 
 extension Configuration {
@@ -30,6 +30,6 @@ extension Configuration {
         minRoundTime: 1.minutes,
         players: ["Phil", "Matt", "Tom", "Tyler", "James"],
         showCountdown: false,
-        voice: .americanChick
+        voice: Voice.allCases[0]
     )
 }

@@ -94,7 +94,7 @@ extension EventConfigurationView {
                         .font(.custom("Lexend", size: 24))
                 }
                 .multilineTextAlignment(.leading)
-                .opacity(viewModel.blueprintIsEnabled(blueprint) ? 1 : 0.5)
+                .opacity(blueprint.isEnabled ? 1 : 0.5)
             })
         }
     }

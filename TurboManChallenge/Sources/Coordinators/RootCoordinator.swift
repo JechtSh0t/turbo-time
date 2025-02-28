@@ -34,7 +34,7 @@ final class RootCoordinator: Coordinator {
     // MARK: - Initializers -
 
     init() {
-        self.audioService = AudioService(voiceType: .americanChick)
+        self.audioService = AudioService()
         self.configurationService = ConfigurationService()
         self.gameService = GameService(
             configurationService: configurationService
@@ -46,6 +46,7 @@ final class RootCoordinator: Coordinator {
             coordinator: self
         )
         self.configurationViewModel = ConfigurationViewModel(
+            audioService: audioService,
             configurationService: configurationService,
             coordinator: self
         )
@@ -60,6 +61,7 @@ extension RootCoordinator {
         sheet = EventViewModel(
             events: events,
             audioService: audioService,
+            configurationService: configurationService,
             coordinator: self
         )
     }

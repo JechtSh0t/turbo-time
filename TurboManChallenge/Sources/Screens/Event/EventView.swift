@@ -76,6 +76,7 @@ extension EventView {
             Event(blueprint: EventBlueprint.default[0], availablePlayers: [])
         ],
         audioService: AudioServiceMock(),
+        configurationService: ConfigurationServiceMock(),
         coordinator: nil
     )
     EventView(viewModel: viewModel)
@@ -87,6 +88,7 @@ extension EventView {
             Event(blueprint: EventBlueprint.default[1], availablePlayers: ["Howard"])
         ],
         audioService: AudioServiceMock(),
+        configurationService: ConfigurationServiceMock(),
         coordinator: nil
     )
     viewModel.buttonSelected()

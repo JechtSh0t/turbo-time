@@ -28,6 +28,7 @@ final class EventViewModel: ViewModel {
     // MARK: - Dependencies -
     
     private let audioService: AudioServiceProtocol
+    private let configurationService: ConfigurationServiceProtocol
     private weak var coordinator: RootCoordinator?
     
     // MARK: - Initializers -
@@ -35,10 +36,12 @@ final class EventViewModel: ViewModel {
     init(
         events: [Event],
         audioService: AudioServiceProtocol,
+        configurationService: ConfigurationServiceProtocol,
         coordinator: RootCoordinator?
     ) {
         self.remainingEvents = events
         self.audioService = audioService
+        self.configurationService = configurationService
         self.coordinator = coordinator
     }
 }
@@ -88,7 +91,9 @@ extension EventViewModel {
             currentEvent = event
             remainingEvents.removeFirst()
             eventNumber += 1
-            audioService.speak(event.text)
+            if let voice = configurationService.getConfiguration().voice.speechVoice {
+                audioService.speak(event.text, voice: voice)
+            }
         } else {
             coordinator?.dismissSelected(from: self)
         }
