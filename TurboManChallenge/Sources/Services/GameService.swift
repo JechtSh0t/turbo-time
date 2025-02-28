@@ -34,13 +34,32 @@ final class GameService: GameServiceProtocol {
 
     private var currentEvents: [Event]?
     private var gameTime: Int = 0
-    private var roundEvents: [EventBlueprint]
     private var roundRemainingTime: Int = 0
     private(set) var state: GameState = .idle
-    private let timedEvents: [Int: EventBlueprint]
     private var timer: Timer?
+    private var usedSingleBlueprints: Set<EventBlueprint> = []
     
     private var configuration: Configuration { configurationService.getConfiguration() }
+    private var roundEventBlueprints: [EventBlueprint] {
+        var roundEvents = [EventBlueprint]()
+        for blueprint in configuration.blueprints {
+            guard !usedSingleBlueprints.contains(blueprint) else { continue }
+            switch blueprint.type {
+            case .single(let frequency): roundEvents.append(contentsOf: Array(repeating: blueprint, count: frequency.rawValue))
+            case .repeatable(let frequency): roundEvents.append(contentsOf: Array(repeating: blueprint, count: frequency.rawValue))
+            case .timed: continue
+            }
+        }
+        return roundEvents
+    }
+    private var timedEventBlueprints: [Int: EventBlueprint] {
+        Dictionary(uniqueKeysWithValues: configuration.blueprints.compactMap {
+            switch $0.type {
+            case .timed(let time, let isEnabled) where isEnabled: (Int(time), $0)
+            default: nil
+            }
+        })
+    }
     
     // MARK: - Dependencies -
     
@@ -49,25 +68,9 @@ final class GameService: GameServiceProtocol {
     // MARK: - Initializers -
     
     init(
-        eventBlueprints: [EventBlueprint],
         configurationService: ConfigurationServiceProtocol
     ) {
         self.configurationService = configurationService
-        var roundEvents = [EventBlueprint]()
-        for blueprint in eventBlueprints {
-            switch blueprint.type {
-            case .single: roundEvents.append(blueprint)
-            case .repeatable(let frequency): roundEvents.append(contentsOf: Array(repeating: blueprint, count: frequency.rawValue))
-            case .timed: continue
-            }
-        }
-        self.roundEvents = roundEvents
-        timedEvents = Dictionary(uniqueKeysWithValues: eventBlueprints.compactMap {
-            switch $0.type {
-            case .single, .repeatable: nil
-            case .timed(let time): (Int(time), $0)
-            }
-        })
     }
 }
 
@@ -96,7 +99,7 @@ extension GameService {
         if roundRemainingTime == 0 {
             stop()
             state = .events(generateRoundEvents())
-        } else if let timedEventBlueprint = timedEvents[gameTime] {
+        } else if let timedEventBlueprint = timedEventBlueprints[gameTime] {
             stop()
             state = .events([generateEvent(from: timedEventBlueprint)])
         }
@@ -129,10 +132,10 @@ extension GameService {
     ///
     private func generateRoundEvents() -> [Event] {
         return (1...configuration.eventsPerRound).map { _ in
-            let index = Int.random(in: 0..<roundEvents.count)
-            let blueprint = roundEvents[index]
+            let index = Int.random(in: 0..<roundEventBlueprints.count)
+            let blueprint = roundEventBlueprints[index]
             let event = generateEvent(from: blueprint)
-            if blueprint.type == .single { roundEvents.remove(at: index) }
+            if case .single = blueprint.type { usedSingleBlueprints.insert(blueprint) }
             return event
         }
     }

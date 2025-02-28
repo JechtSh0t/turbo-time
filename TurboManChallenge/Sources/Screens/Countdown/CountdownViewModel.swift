@@ -9,7 +9,7 @@ import BSGAppBasics
 import SwiftUI
 
 @Observable
-final class CountdownViewModel {
+final class CountdownViewModel: ViewModel {
     
     // MARK: - Properties -
     

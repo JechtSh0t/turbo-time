@@ -13,13 +13,17 @@ import SwiftUI
 /// The root coordinator for the app.
 ///
 @Observable
-final class RootCoordinator {
-
+final class RootCoordinator: Coordinator {
+    
     // MARK: - Properties -
 
     var countdownViewModel: CountdownViewModel!
     var configurationViewModel: ConfigurationViewModel!
-    var sheet: EventViewModel?
+    weak var parent: (any Coordinator)?
+    var path = NavigationPath()
+    var popover: (any ViewModel)?
+    var record = [any ViewModel]()
+    var sheet: (any ViewModel)?
     
     // MARK: - Dependencies -
 
@@ -33,7 +37,6 @@ final class RootCoordinator {
         self.audioService = AudioService(voiceType: .americanChick)
         self.configurationService = ConfigurationService()
         self.gameService = GameService(
-            eventBlueprints: EventBlueprint.all,
             configurationService: configurationService
         )
         self.countdownViewModel = CountdownViewModel(
@@ -43,7 +46,8 @@ final class RootCoordinator {
             coordinator: self
         )
         self.configurationViewModel = ConfigurationViewModel(
-            configurationService: configurationService
+            configurationService: configurationService,
+            coordinator: self
         )
     }
 }
@@ -58,6 +62,13 @@ extension RootCoordinator {
             audioService: audioService,
             coordinator: self
         )
+    }
+    
+    func eventConfigurationTriggered(from source: ConfigurationViewModel) {
+        path.append(EventConfigurationViewModel(
+            configurationService: configurationService,
+            coordinator: self
+        ))
     }
     
     func dismissSelected(from source: EventViewModel) {
@@ -78,22 +89,31 @@ struct RootCoordinatorView: View {
             .tabItem {
                 Label("Game", systemImage: "dice.fill")
             }
-            .background(Color.tabBar)
-            ConfigurationView(viewModel: coordinator.configurationViewModel)
+            NavigationStack(path: $coordinator.path) {
+                ConfigurationView(viewModel: coordinator.configurationViewModel)
+                    .navigationDestination(for: EventConfigurationViewModel.self) {
+                        EventConfigurationView(viewModel: $0)
+                    }
+            }
             .tabItem {
                 Label("Settings", systemImage: "gear")
             }
-            .background(Color.tabBar)
         }
+        .tint(.text)
         .onAppear {
             // Setting the *standardAppearance* and *scrollEdgeAppearance* instances like navigation below
-            // removes the unselected tint color. Selected item colors come from *AccentColor*.
+            // removes the unselected tint color.
             UITabBar.appearance().backgroundColor = UIColor(Color(.tabBar))
-            let fadedItemColor = UIColor(Color(.tintColor)).withAlphaComponent(0.3)
+            let fadedItemColor = UIColor(Color(.text)).withAlphaComponent(0.3)
             UITabBar.appearance().unselectedItemTintColor = fadedItemColor
+            
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.backgroundColor = UIColor(Color(.mainBackground))
+            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         }
         .fullScreenCover(isPresented: Binding(get: { coordinator.sheet != nil }, set: { _ in coordinator.sheet = nil })) {
-            if let viewModel = coordinator.sheet {
+            if let viewModel = coordinator.sheet as? EventViewModel {
                 EventView(viewModel: viewModel)
             }
         }

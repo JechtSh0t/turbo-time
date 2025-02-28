@@ -8,11 +8,12 @@
 import SwiftUI
 
 @Observable
-final class ConfigurationViewModel {
+final class ConfigurationViewModel: ViewModel {
     
     // MARK: - Nested Types -
     
     struct Constant {
+        static let eventsKey = "events"
         static let eventsPerRoundKey = "eventsPerRound"
         static let maxRoundTimeKey = "maxRoundTime"
         static let minRoundTimeKey = "minRoundTime"
@@ -79,9 +80,15 @@ final class ConfigurationViewModel {
     var configuration: Configuration
     var configurationProperties: [any ConfigurationProperty] {[
         InputConfigurationProperty(
+            id: Constant.eventsKey,
+            title: "Events",
+            description: "Tap to change event frequencies.",
+            display: String(configuration.blueprints.count)
+        ),
+        InputConfigurationProperty(
             id: Constant.playersKey,
             title: "Players",
-            description: "The players in the game.",
+            description: "Tap to change players.",
             display: String(configuration.players.count)
         ),
         IncrementConfigurationProperty(
@@ -127,17 +134,23 @@ final class ConfigurationViewModel {
             currentOption: configuration.voice
         )
     ]}
-    private(set) var inputProperty: String?
+    private var inputProperty: String?
+    var shouldShowPlayers: Bool { inputProperty == Constant.playersKey }
     
     // MARK: - Dependencies -
     
     private let configurationService: ConfigurationServiceProtocol
+    private weak var coordinator: RootCoordinator?
     
     // MARK: - Initializers -
     
-    init(configurationService: ConfigurationServiceProtocol) {
-        self.configurationService = configurationService
+    init(
+        configurationService: ConfigurationServiceProtocol,
+        coordinator: RootCoordinator?
+    ) {
         self.configuration = configurationService.getConfiguration()
+        self.configurationService = configurationService
+        self.coordinator = coordinator
     }
 }
 
@@ -156,7 +169,11 @@ extension ConfigurationViewModel {
     }
     
     func inputPropertySelected(_ property: InputConfigurationProperty) {
-        inputProperty = property.id
+        switch property.id {
+        case Constant.eventsKey: coordinator?.eventConfigurationTriggered(from: self)
+        case Constant.playersKey: inputProperty = property.id
+        default: break
+        }
     }
     
     func playerActionSelected(_ action: PlayersView.Action) {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 @Observable
-final class EventViewModel {
+final class EventViewModel: ViewModel {
     
     // MARK: - Properties -
     

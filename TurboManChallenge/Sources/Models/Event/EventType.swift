@@ -10,8 +10,8 @@ import Foundation
 ///
 /// Types of events.
 ///
-enum EventType: Equatable {
-    case single
+enum EventType: Codable, Equatable, Hashable {
+    case single(EventFrequency)
     case repeatable(EventFrequency)
-    case timed(TimeInterval)
+    case timed(TimeInterval, Bool)
 }

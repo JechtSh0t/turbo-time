@@ -12,6 +12,7 @@ import Foundation
 /// Configuration for a game.
 ///
 struct Configuration: Codable {
+    var blueprints: [EventBlueprint]
     var eventsPerRound: Int
     var maxRoundTime: Int
     var minRoundTime: Int
@@ -23,6 +24,7 @@ struct Configuration: Codable {
 extension Configuration {
     
     static var `default` = Configuration(
+        blueprints: EventBlueprint.default,
         eventsPerRound: 3,
         maxRoundTime: 5.minutes,
         minRoundTime: 1.minutes,

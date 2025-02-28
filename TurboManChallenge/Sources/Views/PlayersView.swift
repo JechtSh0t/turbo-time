@@ -88,6 +88,7 @@ extension PlayersView {
                     }, label: {
                         Label("Remove", systemImage: "trash")
                     })
+                    .tint(.black)
                 })
         }
         .listStyle(.plain)

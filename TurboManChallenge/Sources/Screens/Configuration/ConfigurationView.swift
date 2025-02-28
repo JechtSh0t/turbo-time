@@ -26,9 +26,11 @@ struct ConfigurationView: View {
         .foregroundStyle(Color.text)
         .padding(.bottom, 24)
         .screenBackground()
+        .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.inline)
         .customPopover(
             isPresented: Binding(
-                get: { viewModel.inputProperty != nil },
+                get: { viewModel.shouldShowPlayers },
                 set: { _ in viewModel.inputPropertyDismissed() }
             ),
             content: { dismissAction in
@@ -48,7 +50,7 @@ extension ConfigurationView {
     
     private var configurationRows: some View {
         ScrollView {
-            VStack(spacing: 20) {
+            VStack(spacing: 24) {
                 ForEach(viewModel.configurationProperties.indices, id: \.self) { index in
                     let property = viewModel.configurationProperties[index]
                     if let property = property as? ConfigurationViewModel.IncrementConfigurationProperty {
@@ -81,7 +83,7 @@ extension ConfigurationView {
                     increment: property.increment,
                     minimum: property.minimum,
                     maximum: property.maximum,
-                    font: (name: "Lexend", size: 28),
+                    font: (name: "Lexend", size: 24),
                     display: property.display
                 )
             }
@@ -102,7 +104,7 @@ extension ConfigurationView {
                     explanationView(title: property.title, description: property.description)
                     Spacer()
                     Text(property.display)
-                        .font(.custom("Lexend", size: 28))
+                        .font(.custom("Lexend", size: 24))
                 }
                 .multilineTextAlignment(.leading)
             })
@@ -122,7 +124,7 @@ extension ConfigurationView {
                     explanationView(title: property.title, description: property.description)
                     Spacer()
                     Text(property.currentOption.display)
-                        .font(.custom("Lexend", size: 28))
+                        .font(.custom("Lexend", size: 24))
                 }
                 .multilineTextAlignment(.leading)
             })
@@ -150,7 +152,7 @@ extension ConfigurationView {
             viewModel.defaultsButtonSelected()
         }, label: {
             Text("Restore Defaults")
-                .font(.custom("Lexend", size: 28))
+                .font(.custom("Lexend", size: 24))
         })
     }
 }
@@ -158,6 +160,9 @@ extension ConfigurationView {
 // MARK: - Previews -
 
 #Preview {
-    let viewModel = ConfigurationViewModel(configurationService: ConfigurationServiceMock())
+    let viewModel = ConfigurationViewModel(
+        configurationService: ConfigurationServiceMock(),
+        coordinator: nil
+    )
     ConfigurationView(viewModel: viewModel)
 }

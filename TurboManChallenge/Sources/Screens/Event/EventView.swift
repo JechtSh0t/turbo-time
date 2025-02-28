@@ -73,7 +73,7 @@ extension EventView {
 #Preview("Intro") {
     let viewModel = EventViewModel(
         events: [
-            Event(blueprint: EventBlueprint.all[0], availablePlayers: [])
+            Event(blueprint: EventBlueprint.default[0], availablePlayers: [])
         ],
         audioService: AudioServiceMock(),
         coordinator: nil
@@ -84,7 +84,7 @@ extension EventView {
 #Preview("Event") {
     let viewModel = EventViewModel(
         events: [
-            Event(blueprint: EventBlueprint.all[1], availablePlayers: ["Howard"])
+            Event(blueprint: EventBlueprint.default[1], availablePlayers: ["Howard"])
         ],
         audioService: AudioServiceMock(),
         coordinator: nil
