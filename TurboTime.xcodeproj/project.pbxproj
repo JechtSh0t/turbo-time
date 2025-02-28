@@ -11,21 +11,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4A72D93928B5B83E0096BAE0 /* TurboManChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TurboManChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A72D93928B5B83E0096BAE0 /* TurboTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TurboTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
 		4A3CD2822D6D477B00F6AEC4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Assets/Info.plist,
 			);
-			target = 4A72D93828B5B83E0096BAE0 /* TurboManChallenge */;
+			target = 4A72D93828B5B83E0096BAE0 /* TurboTime */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		4A3CD1482D6D31EC00F6AEC4 /* TurboManChallenge */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4A3CD2822D6D477B00F6AEC4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = TurboManChallenge; sourceTree = "<group>"; };
+		4A3CD1482D6D31EC00F6AEC4 /* TurboTime */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (4A3CD2822D6D477B00F6AEC4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = TurboTime; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +43,7 @@
 		4A72D93028B5B83E0096BAE0 = {
 			isa = PBXGroup;
 			children = (
-				4A3CD1482D6D31EC00F6AEC4 /* TurboManChallenge */,
+				4A3CD1482D6D31EC00F6AEC4 /* TurboTime */,
 				4A72D93A28B5B83E0096BAE0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,7 +51,7 @@
 		4A72D93A28B5B83E0096BAE0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4A72D93928B5B83E0096BAE0 /* TurboManChallenge.app */,
+				4A72D93928B5B83E0096BAE0 /* TurboTime.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,9 +59,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4A72D93828B5B83E0096BAE0 /* TurboManChallenge */ = {
+		4A72D93828B5B83E0096BAE0 /* TurboTime */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4A72D94728B5B83F0096BAE0 /* Build configuration list for PBXNativeTarget "TurboManChallenge" */;
+			buildConfigurationList = 4A72D94728B5B83F0096BAE0 /* Build configuration list for PBXNativeTarget "TurboTime" */;
 			buildPhases = (
 				4A72D93528B5B83E0096BAE0 /* Sources */,
 				4A72D93628B5B83E0096BAE0 /* Frameworks */,
@@ -72,14 +72,14 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				4A3CD1482D6D31EC00F6AEC4 /* TurboManChallenge */,
+				4A3CD1482D6D31EC00F6AEC4 /* TurboTime */,
 			);
-			name = TurboManChallenge;
+			name = TurboTime;
 			packageProductDependencies = (
 				4A10E14A28B68776004A1F04 /* BSGAppBasics */,
 			);
 			productName = TurboManChallenge;
-			productReference = 4A72D93928B5B83E0096BAE0 /* TurboManChallenge.app */;
+			productReference = 4A72D93928B5B83E0096BAE0 /* TurboTime.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -97,7 +97,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4A72D93428B5B83E0096BAE0 /* Build configuration list for PBXProject "TurboManChallenge" */;
+			buildConfigurationList = 4A72D93428B5B83E0096BAE0 /* Build configuration list for PBXProject "TurboTime" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -113,7 +113,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4A72D93828B5B83E0096BAE0 /* TurboManChallenge */,
+				4A72D93828B5B83E0096BAE0 /* TurboTime */,
 			);
 		};
 /* End PBXProject section */
@@ -262,11 +262,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TurboManChallenge/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TurboTime/Assets/Preview\"";
 				DEVELOPMENT_TEAM = K9C8XCSNZZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TurboManChallenge/Info.plist;
+				INFOPLIST_FILE = TurboTime/Assets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Turbo Time";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -276,7 +277,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.brookstreetgames.TurboManChallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brookstreetgames.turbotime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -295,11 +296,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TurboManChallenge/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TurboTime/Assets/Preview\"";
 				DEVELOPMENT_TEAM = K9C8XCSNZZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TurboManChallenge/Info.plist;
+				INFOPLIST_FILE = TurboTime/Assets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Turbo Time";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -309,7 +311,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.brookstreetgames.TurboManChallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brookstreetgames.turbotime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -324,7 +326,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4A72D93428B5B83E0096BAE0 /* Build configuration list for PBXProject "TurboManChallenge" */ = {
+		4A72D93428B5B83E0096BAE0 /* Build configuration list for PBXProject "TurboTime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4A72D94528B5B83F0096BAE0 /* Debug */,
@@ -333,7 +335,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4A72D94728B5B83F0096BAE0 /* Build configuration list for PBXNativeTarget "TurboManChallenge" */ = {
+		4A72D94728B5B83F0096BAE0 /* Build configuration list for PBXNativeTarget "TurboTime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4A72D94828B5B83F0096BAE0 /* Debug */,
