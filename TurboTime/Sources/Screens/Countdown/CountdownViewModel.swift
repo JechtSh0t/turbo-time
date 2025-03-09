@@ -13,6 +13,9 @@ final class CountdownViewModel: ViewModel {
     
     // MARK: - Properties -
     
+    let id = UUID()
+    let screenState: ScreenState = .idle
+    
     var countdownDisplay: String? {
         guard case .countdown(let time) = gameState, configurationService.getConfiguration().showCountdown else { return nil }
         return time.timeFormatted ?? ""

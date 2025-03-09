@@ -19,6 +19,7 @@ final class RootCoordinator: Coordinator {
 
     var countdownViewModel: CountdownViewModel!
     var configurationViewModel: ConfigurationViewModel!
+    let id = UUID()
     weak var parent: (any Coordinator)?
     var path = NavigationPath()
     var popover: (any ViewModel)?
@@ -101,15 +102,16 @@ struct RootCoordinatorView: View {
                 Label("Settings", systemImage: "gear")
             }
         }
-        .tint(.text)
+        .tint(.tabBarIcon)
         .onAppear {
             // Setting the *standardAppearance* and *scrollEdgeAppearance* instances like navigation below
             // removes the unselected tint color.
-            UITabBar.appearance().backgroundColor = UIColor(Color(.tabBar))
-            let fadedItemColor = UIColor(Color(.text)).withAlphaComponent(0.3)
+            UITabBar.appearance().backgroundColor = UIColor(Color(.tabBarBackground))
+            let fadedItemColor = UIColor(Color(.tabBarIcon)).withAlphaComponent(0.3)
             UITabBar.appearance().unselectedItemTintColor = fadedItemColor
             
             let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(Color(.text))]
             navigationBarAppearance.backgroundColor = UIColor(Color(.mainBackground))
             UINavigationBar.appearance().standardAppearance = navigationBarAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance

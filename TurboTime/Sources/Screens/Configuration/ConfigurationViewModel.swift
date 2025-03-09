@@ -5,11 +5,12 @@
 //  Copyright © 2025 Brook Street Games. All rights reserved.
 //
 
+import BSGAppBasics
 import SwiftUI
 
 @Observable
 final class ConfigurationViewModel: ViewModel {
-    
+   
     // MARK: - Nested Types -
     
     struct Constant {
@@ -50,10 +51,10 @@ final class ConfigurationViewModel: ViewModel {
         let id: String
         let title: String
         let description: String
-        let currentOption: any CaseWrappable
+        let currentOption: any (CaseWrappable & Displayable)
     }
     
-    enum BooleanToggle: CaseWrappable {
+    enum BooleanToggle: CaseWrappable, Displayable {
         case yes, no
         init(_ value: Bool) {
             switch value {
@@ -134,7 +135,9 @@ final class ConfigurationViewModel: ViewModel {
             currentOption: configuration.voice
         )
     ]}
+    let id = UUID()
     private var inputProperty: String?
+    var screenState: ScreenState = .idle
     var shouldShowPlayers: Bool { inputProperty == Constant.playersKey }
     
     // MARK: - Dependencies -
@@ -191,7 +194,7 @@ extension ConfigurationViewModel {
             guard let index = configuration.players.firstIndex(of: player) else { return }
             configuration.players.remove(at: index)
         case .doneButtonSelected:
-            break
+            inputProperty = nil
         }
         configurationService.setConfiguration(configuration)
     }

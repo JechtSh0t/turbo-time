@@ -10,13 +10,4 @@ import Foundation
 extension Int {
     
     var minutes: Int { return self * 60 }
-    
-    var timeFormatted: String? {
-        let timeInterval = TimeInterval(self)
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute, .second]
-        formatter.unitsStyle = .positional
-        formatter.zeroFormattingBehavior = .pad
-        return formatter.string(from: timeInterval)
-    }
 }

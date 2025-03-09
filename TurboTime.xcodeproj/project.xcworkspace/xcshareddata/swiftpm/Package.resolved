@@ -1,4 +1,5 @@
 {
+  "originHash" : "e13de7513f1e876767386f83e109106c749a4be690935e64d5ce7f2ec0718b63",
   "pins" : [
     {
       "identity" : "bsg-app-basics",
@@ -6,9 +7,9 @@
       "location" : "https://github.com/brook-street-games/bsg-app-basics.git",
       "state" : {
         "branch" : "main",
-        "revision" : "f8318979217556e2827804fe1832469247f969dc"
+        "revision" : "485937b91416828cbd62d3224f8cb01678fb8ab9"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

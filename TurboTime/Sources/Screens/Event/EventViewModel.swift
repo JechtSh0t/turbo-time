@@ -5,16 +5,19 @@
 //  Copyright © 2025 Brook Street Games. All rights reserved.
 //
 
+import BSGAppBasics
 import SwiftUI
 
 @Observable
 final class EventViewModel: ViewModel {
     
     // MARK: - Properties -
-    
+
     private var currentEvent: Event?
     private var eventNumber: Int = 0
+    let id = UUID()
     private var remainingEvents: [Event]
+    let screenState: ScreenState = .idle
     
     var titleText: String { currentEvent == nil ? "Turbo Time!" : "Event #\(eventNumber)" }
     var eventText: Text {

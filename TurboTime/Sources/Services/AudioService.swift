@@ -8,12 +8,14 @@
 import AVFoundation
 import BSGAppBasics
 
+@MainActor
 protocol AudioServiceProtocol {
     func play(_ soundName: String)
     func speak(_ text: String, voice: AVSpeechSynthesisVoice)
     func stop()
 }
 
+@MainActor
 struct AudioServiceMock: AudioServiceProtocol {
     func play(_ soundName: String) {}
     func speak(_ text: String, voice: AVSpeechSynthesisVoice) {}
@@ -23,6 +25,7 @@ struct AudioServiceMock: AudioServiceProtocol {
 ///
 /// A service for playing sounds and speaking text.
 ///
+@MainActor
 struct AudioService: AudioServiceProtocol {
     
     // MARK: - Properties -

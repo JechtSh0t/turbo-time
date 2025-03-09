@@ -6,11 +6,12 @@
 //
 
 import AVFoundation
+import BSGAppBasics
 
 ///
 /// A single voice that can speak text.
 ///
-struct Voice: Codable, CaseWrappable {
+struct Voice: Codable, CaseWrappable, Displayable {
     
     // MARK: - Properties -
     

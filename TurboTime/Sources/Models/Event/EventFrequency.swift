@@ -5,10 +5,12 @@
 //  Copyright © 2022 Brook Street Games. All rights reserved.
 //
 
+import BSGAppBasics
+
 ///
 /// How often events appear.
 ///
-enum EventFrequency: Int, CaseWrappable, Codable, Equatable {
+enum EventFrequency: Int, CaseWrappable, Codable, Equatable, Displayable {
     case off = 0
     case low = 1
     case medium = 2

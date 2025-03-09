@@ -5,6 +5,7 @@
 //  Copyright © 2025 Brook Street Games. All rights reserved.
 //
 
+import BSGAppBasics
 import SwiftUI
 
 @Observable
@@ -13,6 +14,8 @@ final class EventConfigurationViewModel: ViewModel {
     // MARK: - Properties -
     
     private var configuration: Configuration
+    let id = UUID()
+    let screenState: ScreenState = .idle
     
     var sections: [(title: String, events: [EventBlueprint])] {[
         ("Repeatable Events", repeatableEvents),

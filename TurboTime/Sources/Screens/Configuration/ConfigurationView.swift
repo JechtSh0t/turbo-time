@@ -5,6 +5,7 @@
 //  Copyright © 2022 Brook Street Games. All rights reserved.
 //
 
+import BSGAppBasics
 import SwiftUI
 
 ///
@@ -34,10 +35,9 @@ struct ConfigurationView: View {
                 get: { viewModel.shouldShowPlayers },
                 set: { _ in viewModel.inputPropertyDismissed() }
             ),
-            content: { dismissAction in
+            content: {
                 PlayersView(
                     players: viewModel.configuration.players,
-                    dismissAction: dismissAction,
                     actionHandler: viewModel.playerActionSelected
                 )
             }

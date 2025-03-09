@@ -10,7 +10,7 @@ import SwiftUI
 ///
 /// A view to add or remove players.
 ///
-struct PlayersView: PopoverContentView {
+struct PlayersView: View {
     
     enum Action {
         case doneButtonSelected
@@ -21,7 +21,6 @@ struct PlayersView: PopoverContentView {
     // MARK: - Properties -
     
     let players: [String]
-    let dismissAction: DoubleOptionalClosure
     let actionHandler: (Action) -> Void
     
     @State private var newPlayer: String = ""
@@ -35,9 +34,7 @@ struct PlayersView: PopoverContentView {
                 playerListView
             },
             buttonAction: {
-                dismissAction? {
-                    actionHandler(.doneButtonSelected)
-                }
+                actionHandler(.doneButtonSelected)
             }
         )
         .foregroundStyle(Color.text)
@@ -113,7 +110,6 @@ extension PlayersView {
 #Preview {
     PlayersView(
         players: Configuration.default.players,
-        dismissAction: { _ in },
         actionHandler: { _ in }
     )
 }

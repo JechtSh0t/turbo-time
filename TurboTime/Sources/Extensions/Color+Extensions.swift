@@ -9,6 +9,7 @@ import SwiftUI
 
 extension Color {
     static let mainBackground = Color("MainBackgroundColor")
-    static let tabBar = Color("TabBarColor")
+    static let tabBarBackground = Color("TabBarBackgroundColor")
+    static let tabBarIcon = Color("TabBarIconColor")
     static let text = Color("TextColor")
 }
